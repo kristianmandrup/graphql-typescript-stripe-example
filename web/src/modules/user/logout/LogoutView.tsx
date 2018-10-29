@@ -1,18 +1,6 @@
 import * as React from "react";
-import { gql } from "apollo-boost";
-import { userFragment } from "../../../graphql/fragments/userFragment";
 import { meQuery } from "../../../graphql/queries/me";
-import { useApolloMutation } from "react-apollo-hooks";
-
-const logoutMutation = gql`
-  mutation LogoutMutation() {
-    logout() {
-      ...UserInfo
-    }
-  }
-
-  ${userFragment}
-`;
+// import { useApolloMutation } from "react-apollo-hooks";
 
 const updater = () => {
   return (cache: any, { data }: any) => {
@@ -37,7 +25,9 @@ const logout = async ({ history, mutate, data, redirect }: any) => {
 };
 
 export default ({ history }: any) => {
-  const login = useApolloMutation(logoutMutation);
-  const props = { history, update: updater, mutate: login, redirect: "/" };
+  // const logout = useApolloMutation(logoutMutation);
+  // mutate: logout
+  // NOTE: we only need to update the cache (and remove the cookie?)
+  const props = { history, update: updater, redirect: "/" };
   return <button onClick={async () => await logout(props)} />;
 };
