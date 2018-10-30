@@ -1,6 +1,6 @@
 import * as React from "react";
 import { meQuery } from "../../../graphql/queries/me";
-import { useApolloMutation } from "react-apollo-hooks";
+import { useApolloMutation, useApolloClient } from "react-apollo-hooks";
 import { logoutMutation } from "./mutation";
 
 const update = () => {
@@ -16,18 +16,18 @@ const update = () => {
   };
 };
 
-const logout = async ({ history, mutate, data, redirect }: any) => {
+const logout = async ({ client, history, mutate, data, redirect }: any) => {
   const response = await mutate({
     variables: data
   });
+  client.resetStore();
   console.log(response);
   history.push(redirect);
 };
 
 export default ({ history }: any) => {
+  const client = useApolloClient();
   const mutate = useApolloMutation(logoutMutation, { update });
-  // mutate: logout
-  // NOTE: we only need to update the cache (and remove the cookie?)
-  const props = { history, mutate, redirect: "/" };
+  const props = { client, history, mutate, redirect: "/" };
   return <button onClick={async () => await logout(props)} />;
 };

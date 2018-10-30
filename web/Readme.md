@@ -44,3 +44,6 @@ Renders login and logout routes
 - `ChangeCreditCard` via `StripeCheckout`
 - `SubscribeUser` via `StripeCheckout`
 - `PaidUsers`
+
+`ChangeCreditCard` only makes sense if user has already paid.
+`SubscribeUser` is available to free trial user to become paid users.
