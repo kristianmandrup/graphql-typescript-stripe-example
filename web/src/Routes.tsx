@@ -3,9 +3,6 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Main } from "./modules";
 import { LoginView, LogoutView } from "./modules/user";
 
-// UserSession
-// <UserSession />
-
 export const Routes = () => {
   return (
     <BrowserRouter>

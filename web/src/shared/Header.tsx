@@ -15,8 +15,10 @@ const sessionDisplay = ({ data, loading }: any) => {
 
 export const Header = () => {
   const client = useApolloClient();
-  console.log({ client });
-  const { data, loading, error } = useApolloQuery(meQuery, { client });
+  console.log("Header", { client });
+  const result = useApolloQuery(meQuery);
+  const { data, loading, error } = result;
+  console.log({ result });
   if (error) {
     return <div className="error">Error: ${JSON.stringify(error)}</div>;
   }
