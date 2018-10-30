@@ -1,8 +1,8 @@
 import { IResolvers } from "graphql-tools";
-import { me } from "./me";
-import { logout } from "./logout";
-import { login } from "./login";
-import { register } from "./register";
+import { me } from "./account/me";
+import { logout } from "./session/logout";
+import { login } from "./session/login";
+import { register } from "./account/register";
 import * as stripe from "./stripe";
 
 export const resolvers: IResolvers = {

@@ -156,3 +156,8 @@ When your product has been created, Stripe will assign it a product ID. Now clic
 As you create subscriptions, keep track of them on Stripe on the [Test subscriptions](https://dashboard.stripe.com/test/subscriptions) page
 
 For the Customers (Users), check the [Test customers](https://dashboard.stripe.com/test/customers) page
+
+## Design
+
+- [Server](./server/Readme.md)
+- [Web client](./web/Readme.md)

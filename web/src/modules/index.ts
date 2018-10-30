@@ -4,3 +4,4 @@ export { RegisterView } from "./user/register";
 export { Account } from "./account/Account";
 export { PaidUsers } from "./account/PaidUsers";
 export { Main } from "./main";
+export { UserSession } from "./session";

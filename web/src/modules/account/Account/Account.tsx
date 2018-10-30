@@ -1,7 +1,7 @@
 import { meQuery } from "../../../graphql/queries/me";
 import { useApolloQuery } from "react-apollo-hooks";
 import { noData } from "./no-data";
-import { loggedIn } from "./logged-in";
+import { redirectTologin } from "./redirect-to-login";
 import { subscribeOnFreeTrial } from "./subscribe-on-free-trial";
 import { display } from "./display";
 
@@ -17,5 +17,10 @@ export default () => {
   const { data, loading } = useApolloQuery(meQuery);
   return loading
     ? null
-    : renderFirst(data, [noData, loggedIn, subscribeOnFreeTrial, display]);
+    : renderFirst(data, [
+        noData,
+        redirectTologin,
+        subscribeOnFreeTrial,
+        display
+      ]);
 };

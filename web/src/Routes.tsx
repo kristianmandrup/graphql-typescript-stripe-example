@@ -1,13 +1,13 @@
 import * as React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { Main, LoginView } from "./modules";
+import { Main, UserSession } from "./modules";
 
 export class Routes extends React.PureComponent {
   render() {
     return (
       <BrowserRouter>
         <Switch>
-          <Route path="/login" component={LoginView} />
+          <UserSession />
           <Route path="/" render={Main} />
         </Switch>
       </BrowserRouter>
