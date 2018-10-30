@@ -26,6 +26,7 @@ const loggedIn = () => {
   return (
     <div>
       <Link to="/account">account</Link>
+      <Link to="/logout">logout</Link>
     </div>
   );
 };
