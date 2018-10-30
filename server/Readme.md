@@ -1,5 +1,22 @@
 # Server
 
+## Start server
+
+Ensure you have Postgres DB installed and running as a daemon process.
+
+See these videos:
+
+- [Docker PostgreSQL Tutorial with Persistent Data](https://www.youtube.com/watch?v=G3gnMSyX-XM)
+- [Docker Compose Tutorial with PostgreSQL and Node.js](https://www.youtube.com/watch?v=A9bA5HpOk30)
+
+## Docker build
+
+Build docker image using `Dockerfile` and tag it as: `stripe-example-multi-stage`
+
+- `docker build -t stripe-example-multi-stage .`
+
+Now we can reference that image from within `docker-compose.yml` :)
+
 ## DB
 
 ### User entity

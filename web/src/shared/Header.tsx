@@ -1,62 +1,31 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import { Query } from "react-apollo";
-import { MeQuery } from "../schemaTypes";
 import { meQuery } from "../graphql/queries/me";
 import { HeaderButton } from "src/ui/HeaderButton";
+import { useApolloClient, useApolloQuery } from "react-apollo-hooks";
+import { headerStyle } from "./style";
+import { notLoggedIn, loggedIn } from "./session";
 
-const sessionControls = () => {
-  return (
-    <div>
-      <Link to="/login">
-        <HeaderButton>login</HeaderButton>
-      </Link>
-      <Link to="/register">
-        <HeaderButton>register</HeaderButton>
-      </Link>
-    </div>
-  );
-};
-
-const notLoggedIn = (data: any) => {
-  return !data.me ? sessionControls() : null;
-};
-
-const loggedIn = () => {
-  return (
-    <div>
-      <Link to="/account">account</Link>
-      <Link to="/logout">logout</Link>
-    </div>
-  );
-};
-
-const headerStyle = {
-  height: 50,
-  width: "100%",
-  backgroundColor: "rgb(255, 254, 252)",
-  display: "flex",
-  justifyContent: "space-around",
-  padding: 10,
-  alignItems: "center"
-};
-
-export class Header extends React.PureComponent {
-  render() {
-    return (
-      <div style={{ ...headerStyle }}>
-        <Link to="/">
-          <HeaderButton style={{ fontSize: 24 }}>Stripe Example</HeaderButton>
-        </Link>
-        <Query<MeQuery> query={meQuery}>
-          {({ data, loading }) => {
-            if (loading || !data) {
-              return null;
-            }
-            return notLoggedIn(data) || loggedIn();
-          }}
-        </Query>
-      </div>
-    );
+const sessionDisplay = ({ data, loading }: any) => {
+  if (loading || !data) {
+    return null;
   }
-}
+  return notLoggedIn(data) || loggedIn();
+};
+
+export const Header = () => {
+  const client = useApolloClient();
+  console.log({ client });
+  const { data, loading, error } = useApolloQuery(meQuery, { client });
+  if (error) {
+    return <div className="error">Error: ${JSON.stringify(error)}</div>;
+  }
+  return (
+    <div style={{ ...headerStyle }}>
+      <Link to="/">
+        <HeaderButton style={{ fontSize: 24 }}>Stripe Example</HeaderButton>
+      </Link>
+      {sessionDisplay({ data, loading })}
+    </div>
+  );
+};
