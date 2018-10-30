@@ -4,7 +4,7 @@ import { meQuery } from "../../../graphql/queries/me";
 import { CredentialsForm } from "../form";
 import { loginMutation } from "./mutation";
 
-const updater = () => {
+const update = () => {
   return (cache: any, { data }: any) => {
     if (!data || !data.login) {
       return;
@@ -18,7 +18,7 @@ const updater = () => {
 };
 
 export default ({ history }: any) => {
-  const login = useApolloMutation(loginMutation);
-  const props = { history, update: updater, mutate: login };
+  const mutate = useApolloMutation(loginMutation);
+  const props = { history, update, mutate };
   return <CredentialsForm {...props} />;
 };

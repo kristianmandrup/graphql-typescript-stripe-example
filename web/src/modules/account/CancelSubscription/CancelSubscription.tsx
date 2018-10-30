@@ -1,16 +1,6 @@
 import * as React from "react";
-import { gql } from "apollo-boost";
-import { userFragment } from "../../../graphql/fragments/userFragment";
 import { useApolloMutation } from "react-apollo-hooks";
-
-const cancelSubscriptionMutation = gql`
-  mutation CancelSubscriptionMutation {
-    cancelSubscription {
-      ...UserInfo
-    }
-  }
-  ${userFragment}
-`;
+import { cancelSubscriptionMutation } from "./mutation";
 
 export default () => {
   const cancelSubscription = useApolloMutation(cancelSubscriptionMutation);
