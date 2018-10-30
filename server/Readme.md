@@ -72,7 +72,7 @@ If TypeScript fails to build the dist on the image (via `tsc -b`), it could be w
 - `updateCustomer` stripe API
 - `updateUser` DB
 
-`ChangeCreditCard` only makes sense if user has already paid.
+Change credit card only makes sense if user has already paid for a subscription and thus had already registered a credit card.
 
 ### Subscription
 
@@ -83,7 +83,7 @@ If TypeScript fails to build the dist on the image (via `tsc -b`), it could be w
 - `updateCustomer` stripe API
 - `updateUser` DB
 
-`SubscribeUser` is available to `free-trial` users to become `paid` users.
+Creating a new subscribtion only makes sense if user has is on `free-trial` and has not yet paid for a subscription.
 
 #### cancel
 
@@ -93,6 +93,8 @@ If TypeScript fails to build the dist on the image (via `tsc -b`), it could be w
 - `deleteSubscription` stripe API
 - `deleteCard` stripe API
 - `setUserType` DB
+
+Cancel subscription only makes sense if user has already paid for a subscription.
 
 ### Session
 
