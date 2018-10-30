@@ -12,24 +12,28 @@
 
 ## Resolvers
 
-- `Credit card: change`
-- `Subscription: create`
-- `Subscription: cancel`
+- `Credit card`
+- `Subscription`
+- `Session`
 
-### Credit card: change
+### Credit card
+
+#### change
 
 - `findPaidUser` DB
 - `updateCustomer` stripe API
 - `updateUser` DB
 
-### Subscription: create
+### Subscription
+
+#### create
 
 - `findUser` DB
 - `stripeIdFromCustomer` stripe API
 - `updateCustomer` stripe API
 - `updateUser` DB
 
-### Subscription: cancel
+#### cancel
 
 - `findUser` DB
 - `retrieveStripeCustomer` stripe API
@@ -37,3 +41,16 @@
 - `deleteSubscription` stripe API
 - `deleteCard` stripe API
 - `setUserType` DB
+
+### Session
+
+#### login
+
+- `findOne` User matching on `email`
+- compare password via `bcrypt`
+- set session on request
+
+#### logout
+
+- destroy user session on server
+- clear cookie on request
