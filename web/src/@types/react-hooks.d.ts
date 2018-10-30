@@ -1,6 +1,8 @@
 import * as React from "react";
 
 declare module "react" {
+  function Suspense(props: any): any;
+
   function useState<T>(initialState: T | (() => T)): [T, (newState: T) => void];
 
   function useEffect(

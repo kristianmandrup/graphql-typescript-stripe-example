@@ -8,8 +8,6 @@ import { client } from "./client";
 import { GlobalStyle } from "./style";
 import { Fetching } from "./Fetching";
 
-console.log({ client });
-
 ReactDOM.render(
   <Suspense fallback={<Fetching />}>
     <ApolloProvider client={client}>
