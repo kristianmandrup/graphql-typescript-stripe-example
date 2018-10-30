@@ -1,4 +1,4 @@
-import { User } from "../User";
+import { User } from "../user";
 
 export type GetUserFn = (userId: string) => Promise<User | undefined>;
 

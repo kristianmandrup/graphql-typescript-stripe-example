@@ -25,6 +25,29 @@ Which will run the `db` image `postgres` AND the `web` image `stripe-example-mul
 
 This will effectively be your server and you can now run the client that will connect to the server through Apollo Client.
 
+You can now run `yarn start` to run the NodeJS server to expose the GraphQL api on `localhost:4000`
+
+```bash
+$ yarn start
+yarn run v1.5.1
+warning package.json: No license field
+warning ../package.json: No license field
+$ nodemon --exec ts-node src/index.ts
+[nodemon] 1.18.4
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching: *.*
+[nodemon] starting `ts-node src/index.ts`
+🚀 Server ready at http://localhost:4000/graphql
+```
+
+Server is ready for action!
+
+Make sure you have created an `.env` file, see [Environment variables](./Env-variables.md) for details. If not, create the `.env` file and restart the server.
+
+### Troubleshooting
+
+If TypeScript fails to build the dist on the image (via `tsc -b`), it could be well be an issue with uppercase vs lowercase letters in the filename. For file references in `import` statements, make sure they match the filename exactly!
+
 ## DB
 
 ### User entity

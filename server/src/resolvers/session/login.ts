@@ -1,4 +1,4 @@
-import { User } from "../User";
+import { User } from "../user";
 import * as bcrypt from "bcryptjs";
 
 export const login = async (_: any, { email, password }: any, { req }: any) => {
