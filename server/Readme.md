@@ -17,6 +17,14 @@ Build docker image using `Dockerfile` and tag it as: `stripe-example-multi-stage
 
 Now we can reference that image from within `docker-compose.yml` :)
 
+If the image builds without error, you should be able to run:
+
+- `docker-compose up`
+
+Which will run the `db` image `postgres` AND the `web` image `stripe-example-multi-stage`
+
+This will effectively be your server and you can now run the client that will connect to the server through Apollo Client.
+
 ## DB
 
 ### User entity
