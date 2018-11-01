@@ -8,6 +8,7 @@ export const sessionControls = () => {
       <Link to="/login">
         <HeaderButton>login</HeaderButton>
       </Link>
+      <span> | </span>
       <Link to="/register">
         <HeaderButton>register</HeaderButton>
       </Link>
@@ -23,6 +24,7 @@ export const loggedIn = () => {
   return (
     <div>
       <Link to="/account">account</Link>
+      <span> | </span>
       <Link to="/logout">logout</Link>
     </div>
   );

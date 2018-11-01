@@ -5,6 +5,11 @@ import { CredentialsForm } from "../form";
 
 export default ({ history }: any) => {
   const register = useApolloMutation(registerMutation);
-  const props = { history, mutate: register, redirect: "/" };
+  const props = {
+    history,
+    mutate: register,
+    buttonText: "register",
+    redirect: "/"
+  };
   return <CredentialsForm {...props} />;
 };

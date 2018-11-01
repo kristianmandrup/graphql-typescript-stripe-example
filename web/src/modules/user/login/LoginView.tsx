@@ -19,6 +19,6 @@ const update = () => {
 
 export default ({ history }: any) => {
   const mutate = useApolloMutation(loginMutation);
-  const props = { history, update, mutate };
+  const props = { history, update, mutate, buttonText: "login", redirect: "/" };
   return <CredentialsForm {...props} />;
 };

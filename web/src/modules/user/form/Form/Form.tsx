@@ -2,35 +2,41 @@ import * as React from "react";
 import { RedButton } from "../../../../ui/RedButton";
 import { createInput } from "./input";
 import { useInputValue } from "./useInputValue";
-// interface Props {
-//   onSubmit: (data: State) => void;
-//   buttonText: string;
-// }
 
-const createSubmitBtn = ({ onSubmit, state, buttonText }: any) => {
-  return <RedButton onClick={() => onSubmit(state)}>{buttonText}</RedButton>;
+const createSubmitBtn = ({ onSubmit, state, key, buttonText }: any) => {
+  // console.log("createSubmitBtn", { state });
+  return (
+    <RedButton key={key} onClick={() => onSubmit(state)}>
+      {buttonText}
+    </RedButton>
+  );
 };
 
 // TODO: change into new Hook style component (function)
-export default ({ buttonText, onSubmit }: any) => {
+export default ({ buttonText = "submit", onSubmit }: any) => {
   const { ...email } = useInputValue("");
   const { ...password } = useInputValue("");
+  // console.log("useInputValue", { email, password });
 
   const emailInput = createInput({
     name: "email",
+    key: "email",
     ...email
   });
   const passwordInput = createInput({
     name: "password",
+    key: "password",
     type: "password",
     ...password
   });
 
   const submitButton = createSubmitBtn({
     onSubmit,
-    state: { email, password },
+    key: "submit",
+    state: { email: email.value, password: password.value },
     buttonText
   });
+  const form = [emailInput, passwordInput, submitButton];
   return (
     <div
       style={{
@@ -40,7 +46,7 @@ export default ({ buttonText, onSubmit }: any) => {
         justifyContent: "center"
       }}
     >
-      <div>{[emailInput, passwordInput, submitButton]}</div>
+      <div>{form}</div>
     </div>
   );
 };

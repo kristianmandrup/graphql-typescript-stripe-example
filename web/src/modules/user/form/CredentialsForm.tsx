@@ -11,10 +11,11 @@ export const CredentialsForm = ({
     <Form
       buttonText={buttonText}
       onSubmit={async (data: any) => {
+        // console.log("onSubmit", { data });
         const response = await mutate({
           variables: data
         });
-        console.log(response);
+        console.log({ response, redirect });
         if (updater) {
           updater();
         }

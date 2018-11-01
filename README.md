@@ -21,6 +21,14 @@ YouTube Playlist: https://www.youtube.com/playlist?list=PLN3n1USn4xllF5t1GZhEwFQ
 - Ensure Docker client is up and running locally
 - Ensure you have a Stripe account or create one
 
+### Server start
+
+`$ docker-compose up`
+
+## Web client start
+
+`$ yarn start`
+
 ### Stripe account
 
 - If you don't have a Stripe account: [Register](https://dashboard.stripe.com/register)

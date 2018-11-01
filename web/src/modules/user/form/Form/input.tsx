@@ -6,9 +6,11 @@ export const createInput = ({
   type,
   placeholder,
   value,
+  key,
   onChange
 }: any) => (
   <Input
+    key={key}
     label={name || label}
     type={type || "text"}
     name={name}
