@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 import { HeaderButton } from "src/ui/HeaderButton";
+import { LogoutView } from "../modules/user";
 
 export const sessionControls = () => {
   return (
@@ -17,6 +18,7 @@ export const sessionControls = () => {
 };
 
 export const notLoggedIn = (data: any) => {
+  console.log("notLoggedIn", { data });
   return !data.me ? sessionControls() : null;
 };
 
@@ -25,7 +27,7 @@ export const loggedIn = () => {
     <div>
       <Link to="/account">account</Link>
       <span> | </span>
-      <Link to="/logout">logout</Link>
+      <LogoutView />
     </div>
   );
 };

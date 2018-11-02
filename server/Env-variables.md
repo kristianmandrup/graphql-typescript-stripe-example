@@ -5,10 +5,10 @@ Click display secret key and make it available to your app in a safe way.
 
 Add the keys and other configurations to your app via Enviroment variables:
 
+See video [Creating a Customer in Stripe: Part 3](https://www.youtube.com/watch?v=Yr6HOyWUCgE&t=7m0s)
+
 - `process.env.STRIPE_SECRET`
 - `process.env.PLAN` product plan ID
-- `process.env.REACT_APP_STRIPE_PUBLISHABLE` stripe key
-- `process.env.PUBLIC_URL`
 
 A good option for handling env variables is to use [dotenv](https://github.com/motdotla/dotenv) which is used in this project by default.
 

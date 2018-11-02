@@ -13,6 +13,6 @@ export const login = async (_: any, { email, password }: any, { req }: any) => {
   }
 
   req.session.userId = user.id;
-
+  console.log("user logged in", { user });
   return user;
 };

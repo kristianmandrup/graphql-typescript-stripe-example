@@ -61,5 +61,6 @@ export const create = async (
     ? await stripeIdFromCustomer(user, source)
     : await updateCustomer(stripeId, source);
   await updateUser(user, stripeId, ccLast4, "paid");
+  console.log("subscription created", { user });
   return user;
 };

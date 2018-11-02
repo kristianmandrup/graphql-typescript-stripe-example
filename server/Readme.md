@@ -42,8 +42,6 @@ $ nodemon --exec ts-node src/index.ts
 
 Server is ready for action!
 
-Make sure you have created an `.env` file, see [Environment variables](./Env-variables.md) for details. If not, create the `.env` file and restart the server.
-
 ### Troubleshooting
 
 If TypeScript fails to build the dist on the image (via `tsc -b`), it could be well be an issue with uppercase vs lowercase letters in the filename. For file references in `import` statements, make sure they match the filename exactly!

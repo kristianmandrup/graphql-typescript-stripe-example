@@ -9,16 +9,18 @@ const update = () => {
     if (!data || !data.login) {
       return;
     }
+    const { login } = data;
 
+    console.log("update: login add me to query cache", { login });
     cache.writeQuery({
       query: meQuery,
-      data: { me: data.login }
+      data: { me: login }
     });
   };
 };
 
 export default ({ history }: any) => {
-  const mutate = useApolloMutation(loginMutation);
-  const props = { history, update, mutate, buttonText: "login", redirect: "/" };
+  const mutate = useApolloMutation(loginMutation, { update });
+  const props = { history, mutate, buttonText: "login", redirect: "/" };
   return <CredentialsForm {...props} />;
 };

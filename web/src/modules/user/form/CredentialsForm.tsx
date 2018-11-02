@@ -5,20 +5,17 @@ export const CredentialsForm = ({
   mutate,
   redirect,
   buttonText,
-  updater
+  update
 }: any) => {
   return (
     <Form
       buttonText={buttonText}
       onSubmit={async (data: any) => {
-        // console.log("onSubmit", { data });
+        console.log("onSubmit", { data });
         const response = await mutate({
           variables: data
         });
-        console.log({ response, redirect });
-        if (updater) {
-          updater();
-        }
+        console.log({ action: buttonText, response, redirect });
         history.push(redirect);
       }}
     />

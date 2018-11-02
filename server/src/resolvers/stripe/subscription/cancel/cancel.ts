@@ -34,5 +34,6 @@ export const cancel = async (_: any, __: any, { req }: any) => {
   const subscription = getCustomerSubscription(stripeCustomer);
   await deleteSubscription(subscription);
   await deleteCard(user, stripeCustomer);
+  console.log("subscription cancelled", { user, subscription });
   return await setUserType(user, "free-trial");
 };

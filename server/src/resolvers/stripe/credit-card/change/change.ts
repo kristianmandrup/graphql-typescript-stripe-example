@@ -19,5 +19,6 @@ export const change = async (
 ) => {
   const user = await findPaidUser(req, getUser);
   await updateCustomer(user.stripeId, source);
+  console.log("credit card changed", { user });
   return updateUser(user, ccLast4);
 };
