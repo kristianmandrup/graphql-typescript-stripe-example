@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useApolloMutation } from "react-apollo-hooks";
+import { useApolloMutation, useApolloClient } from "react-apollo-hooks";
 import { meQuery } from "../../../graphql/queries/me";
 import { CredentialsForm } from "../form";
 import { loginMutation } from "./mutation";
@@ -20,7 +20,8 @@ const update = () => {
 };
 
 export default ({ history }: any) => {
+  const client = useApolloClient();
   const mutate = useApolloMutation(loginMutation, { update });
-  const props = { history, mutate, buttonText: "login", redirect: "/" };
+  const props = { client, history, mutate, buttonText: "login", redirect: "/" };
   return <CredentialsForm {...props} />;
 };

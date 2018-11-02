@@ -20,10 +20,10 @@ const update = () => {
 
 const logout = async ({ client, history, mutate, data, redirect }: any) => {
   console.log("logout", { data });
+  client.resetStore();
   const response = await mutate({
     variables: data
   });
-  client.resetStore();
   console.log("logged out", { response, redirect });
   history.push(redirect);
 };

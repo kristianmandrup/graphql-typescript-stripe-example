@@ -5,13 +5,14 @@ export const CredentialsForm = ({
   mutate,
   redirect,
   buttonText,
-  update
+  client
 }: any) => {
   return (
     <Form
       buttonText={buttonText}
       onSubmit={async (data: any) => {
         console.log("onSubmit", { data });
+        await client.resetStore();
         const response = await mutate({
           variables: data
         });
