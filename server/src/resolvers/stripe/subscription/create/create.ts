@@ -1,6 +1,17 @@
 import { stripe } from "../../stripe";
-import { getUser } from "../../user";
-import { findUser } from "../../common";
+import { getUser } from "../../../user";
+import { findUserInSession } from "../../common";
+
+const defaults = {
+  plan: process.env.PLAN
+};
+
+const createStripeCustomer = async ({ email, source, plan }) =>
+  await stripe.customers.create({
+    email,
+    source,
+    plan
+  });
 
 const stripeIdFromCustomer = async (
   user: any,
@@ -8,8 +19,8 @@ const stripeIdFromCustomer = async (
   plan?: string
 ): Promise<string> => {
   const { email } = user;
-  plan = plan || process.env.PLAN;
-  const customer = await stripe.customers.create({
+  plan = (plan || defaults.plan)!;
+  const customer = await createStripeCustomer({
     email,
     source,
     plan
@@ -17,20 +28,34 @@ const stripeIdFromCustomer = async (
   return customer.id;
 };
 
+const createStripeSubscription = async ({ customer, items }) =>
+  await stripe.subscriptions.create({
+    customer,
+    items
+  });
+
+const updateStripeCustomer = async ({ stripeId, source }) =>
+  await stripe.customers.update(stripeId, {
+    source
+  });
+
 const updateCustomer = async (
   stripeId: string,
-  source: any
+  source: any,
+  plan?: string
 ): Promise<string> => {
+  plan = (plan || defaults.plan)!;
   // update customer
-  await stripe.customers.update(stripeId, {
+  await updateStripeCustomer({
+    stripeId,
     source
   });
   const items = [
     {
-      plan: process.env.PLAN!
+      plan
     }
   ];
-  await stripe.subscriptions.create({
+  await createStripeSubscription({
     customer: stripeId,
     items
   });
@@ -55,7 +80,7 @@ export const create = async (
   { source, ccLast4 }: any,
   { req }: any
 ) => {
-  const user = await findUser(req, getUser);
+  const user = await findUserInSession(req, getUser);
   let { stripeId } = user;
   stripeId = stripeId
     ? await stripeIdFromCustomer(user, source)

@@ -1,3 +1,4 @@
 import * as Stripe from "stripe";
 
-export const stripe = new Stripe(process.env.STRIPE_SECRET!);
+const secret = process.env.STRIPE_SECRET!;
+export const stripe = new Stripe(secret);

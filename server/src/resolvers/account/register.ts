@@ -1,12 +1,24 @@
 import { User } from "../user";
 import * as bcrypt from "bcryptjs";
 
-export const register = async (_: any, { email, password }: any) => {
-  const hashedPassword = await bcrypt.hash(password, 10);
-  const user = await User.create({
+const hashPassword = async (password: string): Promise<string> =>
+  await bcrypt.hash(password, 10);
+
+const createUser = async ({ email, password }) =>
+  await User.create({
+    email,
+    password
+  }).save();
+
+export const register = async (
+  _: any,
+  { email, password }: any
+): Promise<boolean> => {
+  const hashedPassword = await hashPassword(password);
+  const user = await createUser({
     email,
     password: hashedPassword
-  }).save();
+  });
   console.log("user registered", { user });
   return true;
 };

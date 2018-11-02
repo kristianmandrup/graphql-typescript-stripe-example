@@ -1,9 +1,12 @@
 import { User } from "../user";
-export const me = async (_: any, __: any, { req }: any) => {
-  if (!req.session.userId) {
+const { log } = console;
+const hasUser = (req: any): boolean => Boolean(req.session.userId);
+
+export const me = async (_: any, __: any, { req }: any): Promise<any> => {
+  if (!hasUser(req)) {
     return null;
   }
   const user = await User.findOne(req.session.userId);
-  console.log("me", { user });
-  return;
+  log("me", { user });
+  return user;
 };

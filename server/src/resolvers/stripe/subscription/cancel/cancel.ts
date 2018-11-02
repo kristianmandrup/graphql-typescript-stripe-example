@@ -1,5 +1,5 @@
-import { getUser } from "../../user";
-import { findUser } from "../../common";
+import { getUser } from "../../../user";
+import { findUserInSession } from "../../common";
 import { stripe } from "../../stripe";
 
 const deleteCard = async (user: any, stripeCustomer: any) => {
@@ -29,7 +29,7 @@ const retrieveStripeCustomer = async (user: any) => {
 };
 
 export const cancel = async (_: any, __: any, { req }: any) => {
-  const user = await findUser(req, getUser);
+  const user = await findUserInSession(req, getUser);
   const stripeCustomer = await retrieveStripeCustomer(user);
   const subscription = getCustomerSubscription(stripeCustomer);
   await deleteSubscription(subscription);

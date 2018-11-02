@@ -1,3 +1,3 @@
 export { error } from "./error";
 export { validSession } from "./session";
-export { findUser } from "./user";
+export { findUserInSession } from "./user/find";

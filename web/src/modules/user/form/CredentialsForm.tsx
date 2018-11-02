@@ -1,5 +1,7 @@
 import * as React from "react";
 import { Form } from "./Form";
+const { log } = console;
+
 export const CredentialsForm = ({
   history,
   mutate,
@@ -11,7 +13,7 @@ export const CredentialsForm = ({
     <Form
       buttonText={buttonText}
       onSubmit={async (data: any) => {
-        console.log("onSubmit", { data });
+        log("onSubmit", { data });
         if (client) {
           await client.resetStore();
         }
@@ -21,7 +23,7 @@ export const CredentialsForm = ({
             variables: data
           });
         }
-        console.log({ action: buttonText, response, redirect });
+        log({ action: buttonText, response, redirect });
         if (history) {
           history.push(redirect);
         }
