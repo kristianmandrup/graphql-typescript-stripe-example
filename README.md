@@ -145,6 +145,16 @@ Note that the development build is not optimized.
 To create a production build, use yarn build.
 ```
 
+## Apollo Authentication
+
+See [Reset store on logout](https://www.apollographql.com/docs/react/recipes/authentication.html#login-logout)
+
+The easiest way to ensure that the UI and store state reflects the current user’s permissions is to call `client.resetStore()` after your `login` or `logout` process has completed.
+
+This will cause the store to be cleared and all active queries to be refetched.
+
+If you just want the store to be cleared and don’t want to refetch active queries, use `client.clearStore()` instead. Another option is to reload the page, which will have a similar effect.
+
 ## Testing Stripe checkout
 
 See [Stripe Testing](https://stripe.com/docs/testing)

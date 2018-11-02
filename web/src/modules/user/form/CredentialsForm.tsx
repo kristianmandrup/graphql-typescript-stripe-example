@@ -12,12 +12,19 @@ export const CredentialsForm = ({
       buttonText={buttonText}
       onSubmit={async (data: any) => {
         console.log("onSubmit", { data });
-        await client.resetStore();
-        const response = await mutate({
-          variables: data
-        });
+        if (client) {
+          await client.resetStore();
+        }
+        let response;
+        if (mutate) {
+          response = await mutate({
+            variables: data
+          });
+        }
         console.log({ action: buttonText, response, redirect });
-        history.push(redirect);
+        if (history) {
+          history.push(redirect);
+        }
       }}
     />
   );
