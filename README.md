@@ -46,10 +46,19 @@ Click display secret key and make it available to your app in a safe way.
 
 Add the keys and other configurations to your app via Enviroment variables:
 
+### server
+
+The server uses the following environment variables (from `.env` file)
+
 - `process.env.STRIPE_SECRET`
 - `process.env.PLAN` product plan ID
+
+### web
+
+The web app uses the following environment variables (from `.env` file)
+
 - `process.env.REACT_APP_STRIPE_PUBLISHABLE` stripe key
-- `process.env.PUBLIC_URL`
+- `process.env.PUBLIC_URL` used in service worker
 
 A good option for handling env variables is to use [dotenv](https://github.com/motdotla/dotenv) which is used in this project by default.
 
