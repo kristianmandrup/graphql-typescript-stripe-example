@@ -3,16 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^3.3.2",
+    "@material-ui/icons": "^3.0.1",
     "apollo-boost": "^0.1.16",
+    "dotenv": "^6.0.0",
+    "downshift": "^3.1.4",
     "graphql": "^14.0.2",
+    "lodash": "^4.17.11",
     "react": "^16.7.0-alpha.0",
     "react-apollo": "^2.2.4",
     "react-dom": "^16.7.0-alpha.0",
     "react-router-dom": "^4.3.1",
     "react-scripts-ts": "3.1.0",
     "react-stripe-checkout": "^2.6.3",
-    "styled-components": "^4.0.0-beta.11.1",
-    "dotenv": "^6.0.0"
+    "styled-components": "^4.0.0-beta.11.1"
   },
   "scripts": {
     "start": "react-scripts-ts start",
