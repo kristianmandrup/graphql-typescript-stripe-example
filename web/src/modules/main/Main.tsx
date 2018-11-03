@@ -4,7 +4,7 @@ import { Home } from "./Home";
 import { PaidUsers, Account, RegisterView } from "../";
 import { Header } from "../../shared/Header";
 import { Admin } from "./Admin";
-import AppBar from "./AppBar/AppBar";
+import { AppBar } from "./AppBar";
 
 export const Main = () => (
   <React.Fragment>
