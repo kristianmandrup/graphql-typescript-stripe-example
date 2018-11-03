@@ -1,3 +1,2 @@
 export { RegisterView } from "./register";
-export { LoginView } from "./login";
-export { LogoutView } from "./logout";
+export { LoginView, LogoutView } from "./session";
