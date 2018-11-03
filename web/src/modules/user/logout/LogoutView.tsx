@@ -32,8 +32,7 @@ const LogoutView = ({ history }: any) => {
   const client = useApolloClient();
   const mutate = useApolloMutation(logoutMutation, { update });
   const props = { client, history, mutate, redirect: "/" };
-  console.log({ props });
-  return <button onClick={async () => await logout(props)}>logout</button>;
+  return <span onClick={async () => await logout(props)}>logout</span>;
 };
 
 export default withRouter(LogoutView);

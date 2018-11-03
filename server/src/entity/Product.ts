@@ -8,9 +8,6 @@ export class Product extends BaseEntity {
   @Column("text")
   name: string;
 
-  @Column("text", { nullable: true })
-  stripeId: string | null;
-
   @Column("text", { default: "free-trial" })
   type: string;
 }

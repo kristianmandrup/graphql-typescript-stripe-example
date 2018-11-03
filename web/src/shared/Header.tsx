@@ -24,6 +24,7 @@ export const Header = () => {
       <Link to="/">
         <HeaderButton style={{ fontSize: 24 }}>Stripe Example</HeaderButton>
       </Link>
+      <Link to="/admin">admin</Link>
       {sessionDisplay({ data, loading })}
     </div>
   );
