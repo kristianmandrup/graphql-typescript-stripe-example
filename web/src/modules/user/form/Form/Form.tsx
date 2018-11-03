@@ -3,6 +3,13 @@ import { RedButton } from "../../../../ui/RedButton";
 import { createInput } from "../../../../ui/form/input";
 import { useInputValue } from "../../../../ui/form/useInputValue";
 
+const style: any = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center"
+};
+
 const createSubmitBtn = ({ onSubmit, state, name, key, buttonText }: any) => {
   return (
     <RedButton name={name} key={key || name} onClick={() => onSubmit(state)}>
@@ -32,14 +39,7 @@ export default ({ buttonText = "submit", onSubmit }: any) => {
   });
   const form = [emailInput, passwordInput, submitButton];
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center"
-      }}
-    >
+    <div style={style}>
       <div>{form}</div>
     </div>
   );

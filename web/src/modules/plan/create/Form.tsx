@@ -11,6 +11,13 @@ const createSubmitBtn = ({ onSubmit, state, key, buttonText }: any) => {
   );
 };
 
+export const style = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center"
+};
+
 // currency,
 // interval,
 // product,
@@ -58,14 +65,7 @@ export default ({ buttonText = "submit", onSubmit }: any) => {
     submitButton
   ];
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center"
-      }}
-    >
+    <div style={{}}>
       <div>{form}</div>
     </div>
   );

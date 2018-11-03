@@ -11,6 +11,13 @@ const createSubmitBtn = ({ onSubmit, state, key, buttonText }: any) => {
   );
 };
 
+export const style = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center"
+};
+
 export default ({ buttonText = "submit", onSubmit }: any) => {
   const { ...name } = useInputValue("");
   const { ...type } = useInputValue("");
@@ -32,14 +39,7 @@ export default ({ buttonText = "submit", onSubmit }: any) => {
   });
   const form = [nameInput, typeInput, submitButton];
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center"
-      }}
-    >
+    <div style={{}}>
       <div>{form}</div>
     </div>
   );

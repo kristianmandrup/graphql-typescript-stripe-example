@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const RedButton = styled("button")`
+  max-width: 20em;
+  font-size: 15px;
   align-items: center;
   user-select: none;
   display: inline-flex;

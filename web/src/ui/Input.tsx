@@ -20,11 +20,12 @@ const Label = styled("div")`
 
 const InputContainer = styled("div")`
   display: flex;
+  max-width: 20em;
   align-items: center;
   width: 100%;
   font-size: 15px;
   line-height: 26px;
-  padding: 4px 10px;
+  padding: 4px 0px;
   border-radius: 3px;
   box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px inset,
     rgba(15, 15, 15, 0.1) 0px 1px 1px inset;

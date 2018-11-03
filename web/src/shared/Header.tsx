@@ -1,31 +1,46 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 import { meQuery } from "../graphql/queries/me";
-import { HeaderButton } from "src/ui/HeaderButton";
 import { useApolloQuery } from "react-apollo-hooks";
 import { headerStyle } from "./style";
-import { notLoggedIn, loggedIn } from "./session";
+import { NotLoggedIn, LoggedIn } from "./session";
+import { withStyles } from "@material-ui/core/styles";
+import { Button } from "@material-ui/core";
 
-const sessionDisplay = ({ data, loading }: any) => {
+const SessionDisplay = ({ data, loading }: any) => {
   if (loading || !data) {
     return null;
   }
-  return notLoggedIn(data) || loggedIn();
+  return <NotLoggedIn data={data} /> || <LoggedIn />;
 };
 
-export const Header = () => {
+const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit
+  }
+});
+
+interface Props {
+  classes: any;
+}
+
+export const Header = (props: Props) => {
+  const { classes } = props;
   const result = useApolloQuery(meQuery);
-  const { data, loading, error } = result;
+  const { error } = result;
   if (error) {
     return <div className="error">Error: ${JSON.stringify(error)}</div>;
   }
   return (
     <div style={{ ...headerStyle }}>
-      <Link to="/">
-        <HeaderButton style={{ fontSize: 24 }}>Stripe Example</HeaderButton>
+      <Link to="/admin">
+        <Button variant="outlined" className={classes.button}>
+          Admin
+        </Button>
       </Link>
-      <Link to="/admin">admin</Link>
-      {sessionDisplay({ data, loading })}
+      <SessionDisplay {...result} />
     </div>
   );
 };
+
+export const StyledHeader = withStyles(styles)(Header);
