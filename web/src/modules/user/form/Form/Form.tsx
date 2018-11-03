@@ -1,31 +1,25 @@
 import * as React from "react";
 import { RedButton } from "../../../../ui/RedButton";
-import { createInput } from "./input";
-import { useInputValue } from "./useInputValue";
+import { createInput } from "../../../../ui/form/input";
+import { useInputValue } from "../../../../ui/form/useInputValue";
 
-const createSubmitBtn = ({ onSubmit, state, key, buttonText }: any) => {
-  // console.log("createSubmitBtn", { state });
+const createSubmitBtn = ({ onSubmit, state, name, key, buttonText }: any) => {
   return (
-    <RedButton key={key} onClick={() => onSubmit(state)}>
+    <RedButton name={name} key={key || name} onClick={() => onSubmit(state)}>
       {buttonText}
     </RedButton>
   );
 };
 
-// TODO: change into new Hook style component (function)
 export default ({ buttonText = "submit", onSubmit }: any) => {
   const { ...email } = useInputValue("");
   const { ...password } = useInputValue("");
-  // console.log("useInputValue", { email, password });
-
   const emailInput = createInput({
     name: "email",
-    key: "email",
     ...email
   });
   const passwordInput = createInput({
     name: "password",
-    key: "password",
     type: "password",
     ...password
   });

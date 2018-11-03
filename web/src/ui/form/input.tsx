@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Input } from "../../../../ui/Input";
+import { Input } from "../Input";
 export const createInput = ({
   name,
   label,
@@ -10,7 +10,7 @@ export const createInput = ({
   onChange
 }: any) => (
   <Input
-    key={key}
+    key={key || name}
     label={name || label}
     type={type || "text"}
     name={name}
