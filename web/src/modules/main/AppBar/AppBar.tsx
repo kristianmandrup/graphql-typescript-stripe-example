@@ -45,23 +45,18 @@ class PrimarySearchAppBar extends React.Component<Props> {
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
     // See: https://github.com/google/material-design-icons/issues/286#issuecomment-411167707
-    const renderMenu = () => {
-      const props = {
+    const props = {
+      menu: {
         anchorEl,
         isMenuOpen,
         handleMenuClose: this.handleMenuClose
-      };
-      return <TopBarMenu {...props} />;
-    };
-
-    const renderMobileMenu = () => {
-      const props = {
+      },
+      mobileMenu: {
         anchorEl: mobileMoreAnchorEl,
         isMenuOpen: isMobileMenuOpen,
         handleMenuClose: this.handleMenuClose,
         handleProfileMenuOpen: this.handleProfileMenuOpen
-      };
-      return <TopBarMobileMenu {...props} />;
+      }
     };
 
     return (
@@ -72,6 +67,7 @@ class PrimarySearchAppBar extends React.Component<Props> {
             <Title classes={classes} />
             <Search />
             <div className={classes.grow} />
+
             <DesktopSection
               classes={classes}
               isMenuOpen={isMenuOpen}
@@ -83,8 +79,8 @@ class PrimarySearchAppBar extends React.Component<Props> {
             />
           </Toolbar>
         </AppBar>
-        {renderMenu}
-        {renderMobileMenu}
+        <TopBarMenu {...props.menu} />
+        <TopBarMobileMenu {...props.mobileMenu} />
       </div>
     );
   }
