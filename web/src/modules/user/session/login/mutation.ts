@@ -1,5 +1,5 @@
 import { gql } from "apollo-boost";
-import { userFragment } from "../../../graphql/fragments/userFragment";
+import { userFragment } from "../../../../graphql/fragments/userFragment";
 
 export const loginMutation = gql`
   mutation LoginMutation($email: String!, $password: String!) {

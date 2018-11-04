@@ -1,5 +1,5 @@
 import * as React from "react";
-import { meQuery } from "../../../graphql/queries/me";
+import { meQuery } from "../../../../graphql/queries/me";
 import { useApolloMutation, useApolloClient } from "react-apollo-hooks";
 import { logoutMutation } from "./mutation";
 import { withRouter } from "react-router";
@@ -60,4 +60,5 @@ const StyledLogoutView = compose(
   withRouter,
   withStyles(styles)
 )(LogoutView);
+
 export default StyledLogoutView;

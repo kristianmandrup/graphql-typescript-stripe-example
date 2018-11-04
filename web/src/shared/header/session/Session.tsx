@@ -28,8 +28,8 @@ export const RegisterBtn = ({ classes }: any) => (
 
 export const GuestSessionControls = ({ classes }: any) => (
   <>
-    <LoginBtn />
-    <RegisterBtn />
+    <LoginBtn classes={classes} />
+    <RegisterBtn classes={classes} />
   </>
 );
 

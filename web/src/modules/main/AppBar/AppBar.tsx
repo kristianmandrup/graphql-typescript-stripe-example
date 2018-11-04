@@ -8,8 +8,11 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import { withStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import MailIcon from "@material-ui/icons/Mail";
+import AccountIcon from "@material-ui/icons/AccountCircle";
+import PersonIcon from "@material-ui/icons/Person";
+import LoginIcon from "@material-ui/icons/ExitToApp";
+import LogoutIcon from "@material-ui/icons/PowerSettingsNew";
+import RegisterIcon from "@material-ui/icons/PersonAdd";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import Search from "./Search";
@@ -48,6 +51,7 @@ class PrimarySearchAppBar extends React.Component<Props> {
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
+    // See: https://github.com/google/material-design-icons/issues/286#issuecomment-411167707
     const renderMenu = (
       <Menu
         anchorEl={anchorEl}
@@ -57,7 +61,24 @@ class PrimarySearchAppBar extends React.Component<Props> {
         onClose={this.handleMenuClose}
       >
         <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
-        <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
+        <MenuItem onClick={this.handleMenuClose}>
+          <IconButton color="inherit">
+            <AccountIcon />
+          </IconButton>
+          Account
+        </MenuItem>
+        <MenuItem onClick={this.handleMenuClose}>
+          <IconButton color="inherit">
+            <LoginIcon />
+          </IconButton>
+          Login
+        </MenuItem>
+        <MenuItem onClick={this.handleMenuClose}>
+          <IconButton color="inherit">
+            <LogoutIcon />
+          </IconButton>
+          Logout
+        </MenuItem>
       </Menu>
     );
 
@@ -71,14 +92,6 @@ class PrimarySearchAppBar extends React.Component<Props> {
       >
         <MenuItem>
           <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <MailIcon />
-            </Badge>
-          </IconButton>
-          <p>Messages</p>
-        </MenuItem>
-        <MenuItem>
-          <IconButton color="inherit">
             <Badge badgeContent={11} color="secondary">
               <NotificationsIcon />
             </Badge>
@@ -87,7 +100,7 @@ class PrimarySearchAppBar extends React.Component<Props> {
         </MenuItem>
         <MenuItem onClick={this.handleProfileMenuOpen}>
           <IconButton color="inherit">
-            <AccountCircle />
+            <PersonIcon />
           </IconButton>
           <p>Profile</p>
         </MenuItem>
@@ -117,12 +130,10 @@ class PrimarySearchAppBar extends React.Component<Props> {
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
               <IconButton color="inherit">
-                <Badge badgeContent={4} color="secondary">
-                  <MailIcon />
-                </Badge>
+                <RegisterIcon />
               </IconButton>
               <IconButton color="inherit">
-                <Badge badgeContent={17} color="secondary">
+                <Badge badgeContent={3} color="secondary">
                   <NotificationsIcon />
                 </Badge>
               </IconButton>
@@ -132,7 +143,7 @@ class PrimarySearchAppBar extends React.Component<Props> {
                 onClick={this.handleProfileMenuOpen}
                 color="inherit"
               >
-                <AccountCircle />
+                <AccountIcon />
               </IconButton>
             </div>
             <div className={classes.sectionMobile}>

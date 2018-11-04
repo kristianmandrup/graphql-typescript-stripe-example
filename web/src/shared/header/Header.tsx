@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { meQuery } from "../../graphql/queries/me";
 import { useApolloQuery } from "react-apollo-hooks";
 import { headerStyle } from "./style";
-import { NotLoggedIn, LoggedIn } from "./Session/Session";
+import { NotLoggedIn, LoggedIn } from "./session";
 import { withStyles } from "@material-ui/core/styles";
 import { Button } from "@material-ui/core";
 

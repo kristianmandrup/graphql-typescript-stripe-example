@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useApolloMutation, useApolloClient } from "react-apollo-hooks";
-import { meQuery } from "../../../graphql/queries/me";
-import { CredentialsForm } from "../form";
+import { meQuery } from "../../../../graphql/queries/me";
+import { CredentialsForm } from "../../form";
 import { loginMutation } from "./mutation";
 
 const update = () => {
