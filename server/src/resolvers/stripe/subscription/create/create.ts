@@ -28,11 +28,18 @@ const stripeIdFromCustomer = async (
   return customer.id;
 };
 
-const createStripeSubscription = async ({ customer, items }) =>
-  await stripe.subscriptions.create({
-    customer,
-    items
-  });
+interface Item {
+  plan: string;
+}
+
+interface Subscription {
+  customer: string;
+  items: Item[];
+  billing_cycle_anchor?: number;
+}
+
+const createStripeSubscription = async (subscription: Subscription) =>
+  await stripe.subscriptions.create(subscription);
 
 const updateStripeCustomer = async ({ stripeId, source }) =>
   await stripe.customers.update(stripeId, {
@@ -75,11 +82,8 @@ const updateUser = async (
   return user;
 };
 
-export const create = async (
-  _: any,
-  { source, ccLast4 }: any,
-  { req }: any
-) => {
+export const create = async (_: any, props: any, { req }: any) => {
+  const { source, ccLast4 } = props;
   const user = await findUserInSession(req, getUser);
   let { stripeId } = user;
   stripeId = stripeId

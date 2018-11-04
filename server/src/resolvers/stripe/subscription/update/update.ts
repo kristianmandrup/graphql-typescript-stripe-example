@@ -1,16 +1,25 @@
 import { stripe } from "../../stripe";
 
-const switchSubscriptionPlan = async ({ subscriptionId, planId }) => {
-  const subscription = await stripe.subscriptions.retrieve(subscriptionId);
+const updateSubscriptionPlan = async ({
+  subscription,
+  subscriptionId,
+  plan
+}) => {
+  const { id } = subscription.items.data[0];
   return await stripe.subscriptions.update(subscriptionId, {
     cancel_at_period_end: false,
     items: [
       {
-        id: subscription.items.data[0].id,
-        plan: planId
+        id,
+        plan
       }
     ]
   });
+};
+
+const switchSubscriptionPlan = async ({ subscriptionId, plan }) => {
+  const subscription = await stripe.subscriptions.retrieve(subscriptionId);
+  updateSubscriptionPlan({ subscription, subscriptionId, plan });
 };
 
 export const update = async (_: any, props: any, __: any) => {

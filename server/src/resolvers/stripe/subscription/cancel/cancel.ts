@@ -10,7 +10,13 @@ const deleteCard = async (user: any, stripeCustomer: any) => {
 };
 
 const deleteSubscription = async (subscription: any) => {
-  await stripe.subscriptions.del(subscription.id);
+  return await stripe.subscriptions.del(subscription.id);
+};
+
+export const cancelSubscriptionAtEnd = async (subscription: any) => {
+  return await stripe.subscriptions.update(subscription.id, {
+    cancel_at_period_end: true
+  });
 };
 
 const getCustomerSubscription = (stripeCustomer: any) => {
