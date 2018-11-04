@@ -1,13 +1,12 @@
 import { stripe } from "../../stripe";
 
-export const createProduct = async ({ name, type }) => {
-  return await stripe.products.create({
-    name,
-    type
-  });
-};
+interface Product {
+  name;
+  type;
+}
 
-export const create = async (_: any, { name, type }: any, __: any) => {
-  const product = await createProduct({ name, type });
-  return product;
-};
+export const createProduct = async (props: Product) =>
+  await stripe.products.create(props);
+
+export const create = async (_: any, props: Product, __: any) =>
+  await createProduct(props);
