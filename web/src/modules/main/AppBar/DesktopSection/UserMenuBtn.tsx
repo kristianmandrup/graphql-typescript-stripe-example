@@ -3,16 +3,18 @@ import IconButton from "@material-ui/core/IconButton";
 import AccountIcon from "@material-ui/icons/AccountCircle";
 
 export const UserMenuBtn = ({
-  classes,
+  isLoggedIn,
   isMenuOpen,
   handleProfileMenuOpen
-}: any) => (
-  <IconButton
-    aria-owns={isMenuOpen ? "material-appbar" : undefined}
-    aria-haspopup="true"
-    onClick={handleProfileMenuOpen}
-    color="inherit"
-  >
-    <AccountIcon />
-  </IconButton>
-);
+}: any) => {
+  return !isLoggedIn ? null : (
+    <IconButton
+      aria-owns={isMenuOpen ? "material-appbar" : undefined}
+      aria-haspopup="true"
+      onClick={handleProfileMenuOpen}
+      color="inherit"
+    >
+      <AccountIcon />
+    </IconButton>
+  );
+};

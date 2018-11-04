@@ -13,6 +13,7 @@ import { DesktopSection } from "./DesktopSection/DesktopSection";
 
 interface Props {
   classes: any;
+  isLoggedIn: boolean;
 }
 
 class PrimarySearchAppBar extends React.Component<Props> {
@@ -40,22 +41,33 @@ class PrimarySearchAppBar extends React.Component<Props> {
 
   render() {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
-    const { classes } = this.props;
+    const { classes, isLoggedIn } = this.props;
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
     // See: https://github.com/google/material-design-icons/issues/286#issuecomment-411167707
     const props = {
       menu: {
+        isLoggedIn,
         anchorEl,
         isMenuOpen,
         handleMenuClose: this.handleMenuClose
       },
       mobileMenu: {
+        isLoggedIn,
         anchorEl: mobileMoreAnchorEl,
         isMenuOpen: isMobileMenuOpen,
         handleMenuClose: this.handleMenuClose,
         handleProfileMenuOpen: this.handleProfileMenuOpen
+      },
+      desktop: {
+        isLoggedIn,
+        isMenuOpen,
+        handleProfileMenuOpen: this.handleProfileMenuOpen
+      },
+      more: {
+        classes,
+        handleMobileMenuOpen: this.handleMobileMenuOpen
       }
     };
 
@@ -67,16 +79,8 @@ class PrimarySearchAppBar extends React.Component<Props> {
             <Title classes={classes} />
             <Search />
             <div className={classes.grow} />
-
-            <DesktopSection
-              classes={classes}
-              isMenuOpen={isMenuOpen}
-              handleProfileMenuOpen={this.handleProfileMenuOpen}
-            />
-            <MoreBtn
-              classes={classes}
-              handleMobileMenuOpen={this.handleMobileMenuOpen}
-            />
+            <DesktopSection {...props.desktop} />
+            <MoreBtn {...props.more} />
           </Toolbar>
         </AppBar>
         <TopBarMenu {...props.menu} />
