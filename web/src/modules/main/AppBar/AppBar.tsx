@@ -1,20 +1,15 @@
 import * as React from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import Badge from "@material-ui/core/Badge";
 import { withStyles } from "@material-ui/core/styles";
-import MenuIcon from "@material-ui/icons/Menu";
-import AccountIcon from "@material-ui/icons/AccountCircle";
-import RegisterIcon from "@material-ui/icons/PersonAdd";
-import NotificationsIcon from "@material-ui/icons/Notifications";
 import Search from "./Search";
 import { styles } from "./styles";
-import { Link } from "react-router-dom";
 import { TopBarMenu } from "./Menu";
 import { TopBarMobileMenu } from "./MobileMenu";
 import { Title } from "./Title";
-import { More } from "./More";
+import { MoreBtn } from "./MoreBtn";
+import { DrawerBtn } from "./DrawerBtn";
+import { DesktopSection } from "./DesktopSection/DesktopSection";
 
 interface Props {
   classes: any;
@@ -73,40 +68,16 @@ class PrimarySearchAppBar extends React.Component<Props> {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <IconButton
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="Open drawer"
-            >
-              <MenuIcon />
-            </IconButton>
+            <DrawerBtn classes={classes} />
             <Title classes={classes} />
             <Search />
             <div className={classes.grow} />
-            <div className={classes.sectionDesktop}>
-              <Link to="/admin">Admin</Link>
-              <Link to="/register">
-                <IconButton color="inherit">
-                  <RegisterIcon />
-                </IconButton>
-              </Link>
-              <Link to="/notifications">
-                <IconButton color="inherit">
-                  <Badge badgeContent={3} color="secondary">
-                    <NotificationsIcon />
-                  </Badge>
-                </IconButton>
-              </Link>
-              <IconButton
-                aria-owns={isMenuOpen ? "material-appbar" : undefined}
-                aria-haspopup="true"
-                onClick={this.handleProfileMenuOpen}
-                color="inherit"
-              >
-                <AccountIcon />
-              </IconButton>
-            </div>
-            <More
+            <DesktopSection
+              classes={classes}
+              isMenuOpen={isMenuOpen}
+              handleProfileMenuOpen={this.handleProfileMenuOpen}
+            />
+            <MoreBtn
               classes={classes}
               handleMobileMenuOpen={this.handleMobileMenuOpen}
             />
