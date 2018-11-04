@@ -4,6 +4,7 @@ import { Home } from "./Home";
 import { PaidUsers, Account, RegisterView } from "../";
 import { Admin } from "./Admin";
 import { AppBar } from "./AppBar";
+import { StyledBottomBar } from "./BottomBar";
 // import { StyledHeader } from "../../shared/header/Header";
 
 export const Main = () => (
@@ -16,5 +17,6 @@ export const Main = () => (
       <Route path="/paid-users" component={PaidUsers} />
       <Route exact={true} path="/" render={Home} />
     </div>
+    <StyledBottomBar />
   </React.Fragment>
 );
