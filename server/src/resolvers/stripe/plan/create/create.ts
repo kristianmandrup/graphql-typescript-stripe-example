@@ -7,19 +7,20 @@ const defaults = {
   }
 };
 
-const createPlan = async (props: any) => {
+interface NewPlan {
+  currency: string;
+  interval: any;
+  product: string;
+  nickname: string;
+  amount: number;
+}
+
+const createPlan = async (props: NewPlan) => {
   props = {
     ...defaults.plan,
     ...props
   };
-  const { currency, interval, product, nickname, amount } = props;
-  return await stripe.plans.create({
-    currency,
-    interval,
-    product,
-    nickname,
-    amount
-  });
+  return await stripe.plans.create(props);
 };
 
 export const create = async (_: any, props: any, __: any) => {

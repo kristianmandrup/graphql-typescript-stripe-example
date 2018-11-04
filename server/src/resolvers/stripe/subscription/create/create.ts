@@ -1,7 +1,9 @@
 import { stripe } from "../../stripe";
 import { getUser } from "../../../user";
 import { findUserInSession } from "../../common";
-import { stripeIdFromCustomer } from "../../customer";
+import { stripeIdFromCustomer, updateCustomer } from "../../customer";
+import { updateUser } from "../../../../model/user/update";
+import { listBy } from "../list/list";
 
 const defaults = {
   plan: process.env.PLAN
@@ -21,45 +23,40 @@ interface Subscription {
 const createStripeSubscription = async (subscription: Subscription) =>
   await stripe.subscriptions.create(subscription);
 
-const updateStripeCustomer = async ({ stripeId, source }) =>
-  await stripe.customers.update(stripeId, {
-    source
-  });
+interface NewSubscription {
+  plan: string;
+  startAt?: number;
+}
 
-const updateCustomer = async (
+const createSubscription = async (
   stripeId: string,
-  source: any,
-  plan?: string
-): Promise<string> => {
-  plan = (plan || defaults.plan)!;
-  // update customer
-  await updateStripeCustomer({
-    stripeId,
-    source
-  });
+  subscription: NewSubscription
+) => {
+  const { plan, startAt } = subscription;
   const items = [
     {
-      plan
+      plan: plan //|| defaults.plan
     }
   ];
   await createStripeSubscription({
     customer: stripeId,
-    items
+    items,
+    billing_cycle_anchor: startAt
   });
   return stripeId;
 };
 
-const updateUser = async (
-  user: any,
-  stripeId: string,
-  ccLast4: any,
-  type: string = "paid"
-) => {
-  user.stripeId = stripeId;
-  user.type = type;
-  user.ccLast4 = ccLast4;
-  await user.save();
-  return user;
+const updateCustomerAndSubscription = async ({
+  stripeId,
+  plan,
+  source
+}: any) => {
+  await updateCustomer(stripeId, source);
+  const subscription = {
+    plan
+  };
+  await createSubscription(stripeId, subscription);
+  return stripeId;
 };
 
 export const create = async (_: any, props: any, { req }: any) => {
@@ -67,8 +64,9 @@ export const create = async (_: any, props: any, { req }: any) => {
   const user = await findUserInSession(req, getUser);
   let { stripeId } = user;
   stripeId = stripeId
-    ? await stripeIdFromCustomer(user, source)
-    : await updateCustomer(stripeId, source);
+    ? await updateCustomerAndSubscription({ stripeId, source })
+    : await stripeIdFromCustomer(user, source);
+
   await updateUser(user, stripeId, ccLast4, "paid");
   console.log("subscription created", { user });
   return user;

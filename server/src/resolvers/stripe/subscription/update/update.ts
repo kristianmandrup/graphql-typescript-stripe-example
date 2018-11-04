@@ -31,9 +31,9 @@ const updateSubscriptionPlan = async ({
   });
 };
 
-const switchSubscriptionPlan = async ({ subscriptionId, plan }) => {
-  const subscription = await stripe.subscriptions.retrieve(subscriptionId);
-  updateSubscriptionPlan({ subscription, subscriptionId, plan });
+const switchSubscriptionPlan = async ({ id, plan }) => {
+  const subscription = await stripe.subscriptions.retrieve(id);
+  updateSubscriptionPlan({ subscription, subscriptionId: id, plan });
 };
 
 export const update = async (_: any, props: any, __: any) => {
