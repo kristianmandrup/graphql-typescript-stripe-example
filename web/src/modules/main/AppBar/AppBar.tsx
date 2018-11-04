@@ -17,6 +17,7 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import Search from "./Search";
 import { styles } from "./styles";
+import { Link } from "react-router-dom";
 
 interface Props {
   classes: any;
@@ -62,22 +63,28 @@ class PrimarySearchAppBar extends React.Component<Props> {
       >
         <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
         <MenuItem onClick={this.handleMenuClose}>
-          <IconButton color="inherit">
-            <AccountIcon />
-          </IconButton>
-          Account
+          <Link to="/account">
+            <IconButton color="inherit">
+              <AccountIcon />
+            </IconButton>
+            Account
+          </Link>
         </MenuItem>
         <MenuItem onClick={this.handleMenuClose}>
-          <IconButton color="inherit">
-            <LoginIcon />
-          </IconButton>
-          Login
+          <Link to="/login">
+            <IconButton color="inherit">
+              <LoginIcon />
+            </IconButton>
+            Login
+          </Link>
         </MenuItem>
         <MenuItem onClick={this.handleMenuClose}>
-          <IconButton color="inherit">
-            <LogoutIcon />
-          </IconButton>
-          Logout
+          <Link to="/logout">
+            <IconButton color="inherit">
+              <LogoutIcon />
+            </IconButton>
+            Logout
+          </Link>
         </MenuItem>
       </Menu>
     );
@@ -129,14 +136,18 @@ class PrimarySearchAppBar extends React.Component<Props> {
             <Search />
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              <IconButton color="inherit">
-                <RegisterIcon />
-              </IconButton>
-              <IconButton color="inherit">
-                <Badge badgeContent={3} color="secondary">
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>
+              <Link to="/register">
+                <IconButton color="inherit">
+                  <RegisterIcon />
+                </IconButton>
+              </Link>
+              <Link to="/notifications">
+                <IconButton color="inherit">
+                  <Badge badgeContent={3} color="secondary">
+                    <NotificationsIcon />
+                  </Badge>
+                </IconButton>
+              </Link>
               <IconButton
                 aria-owns={isMenuOpen ? "material-appbar" : undefined}
                 aria-haspopup="true"
