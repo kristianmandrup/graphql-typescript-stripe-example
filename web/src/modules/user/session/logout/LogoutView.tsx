@@ -4,7 +4,7 @@ import { useApolloMutation, useApolloClient } from "react-apollo-hooks";
 import { logoutMutation } from "./mutation";
 import { withRouter } from "react-router";
 import { withStyles } from "@material-ui/core/styles";
-import { Button } from "@material-ui/core";
+// import { Button } from "@material-ui/core";
 import { compose } from "recompose";
 
 const update = () => {
@@ -36,23 +36,27 @@ const styles = theme => ({
 });
 
 interface Props {
-  classes: any;
-  history: any;
+  classes?: any;
+  history?: any;
 }
 
-const LogoutView = (props: Props) => {
+export const LogoutView = (props: Props = {}) => {
+  console.log({ props });
+  props = {
+    classes: styles,
+    ...props
+  };
   const { history, classes } = props;
   const client = useApolloClient();
   const mutate = useApolloMutation(logoutMutation, { update });
   const options = { client, history, mutate, redirect: "/" };
   return (
-    <Button
-      variant="outlined"
+    <span
       className={classes.button}
       onClick={async () => await logout(options)}
     >
       Logout
-    </Button>
+    </span>
   );
 };
 

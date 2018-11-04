@@ -18,6 +18,7 @@ import MoreIcon from "@material-ui/icons/MoreVert";
 import Search from "./Search";
 import { styles } from "./styles";
 import { Link } from "react-router-dom";
+import { LogoutView } from "../../user/session/logout/LogoutView";
 
 interface Props {
   classes: any;
@@ -79,12 +80,10 @@ class PrimarySearchAppBar extends React.Component<Props> {
           </Link>
         </MenuItem>
         <MenuItem onClick={this.handleMenuClose}>
-          <Link to="/logout">
-            <IconButton color="inherit">
-              <LogoutIcon />
-            </IconButton>
-            Logout
-          </Link>
+          <IconButton color="inherit">
+            <LogoutIcon />
+          </IconButton>
+          <LogoutView />
         </MenuItem>
       </Menu>
     );
@@ -136,6 +135,7 @@ class PrimarySearchAppBar extends React.Component<Props> {
             <Search />
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
+              <Link to="/admin">Admin</Link>
               <Link to="/register">
                 <IconButton color="inherit">
                   <RegisterIcon />
