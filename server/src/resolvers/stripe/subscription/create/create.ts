@@ -1,31 +1,10 @@
 import { stripe } from "../../stripe";
 import { getUser } from "../../../user";
 import { findUserInSession } from "../../common";
+import { stripeIdFromCustomer } from "../../customer";
 
 const defaults = {
   plan: process.env.PLAN
-};
-
-const createStripeCustomer = async ({ email, source, plan }) =>
-  await stripe.customers.create({
-    email,
-    source,
-    plan
-  });
-
-const stripeIdFromCustomer = async (
-  user: any,
-  source: any,
-  plan?: string
-): Promise<string> => {
-  const { email } = user;
-  plan = (plan || defaults.plan)!;
-  const customer = await createStripeCustomer({
-    email,
-    source,
-    plan
-  });
-  return customer.id;
 };
 
 interface Item {
@@ -36,6 +15,7 @@ interface Subscription {
   customer: string;
   items: Item[];
   billing_cycle_anchor?: number;
+  trial_end?: number;
 }
 
 const createStripeSubscription = async (subscription: Subscription) =>

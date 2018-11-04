@@ -1,5 +1,19 @@
 import { stripe } from "../../stripe";
 
+export const addTrialPeriod = async ({ subscriptionId, trialEnd }) => {
+  return await stripe.subscriptions.update(subscriptionId, {
+    trial_end: trialEnd,
+    prorate: false
+  });
+};
+
+export const resetBillingcycle = async ({ subscriptionId }) => {
+  return await stripe.subscriptions.update(subscriptionId, {
+    billing_cycle_anchor: "now",
+    prorate: true
+  });
+};
+
 const updateSubscriptionPlan = async ({
   subscription,
   subscriptionId,
