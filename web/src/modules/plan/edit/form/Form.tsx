@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Button } from "@material-ui/core";
-import { createInput } from "../../../ui/form/input";
-import { useInputValue } from "../../../ui/form/useInputValue";
+import { createInput } from "../../../../ui/form/input";
+import { useInputValue } from "../../../../ui/form/useInputValue";
 
 const createSubmitBtn = ({ onSubmit, state, key, buttonText }: any) => {
   return (
@@ -23,7 +23,7 @@ export const style = {
 // product,
 // nickname,
 // amount
-export default ({ buttonText = "submit", onSubmit }: any) => {
+export const Form = ({ buttonText = "submit", onSubmit }: any) => {
   const { ...nickname } = useInputValue("");
   const { ...amount } = useInputValue("");
   const { ...product } = useInputValue("");
