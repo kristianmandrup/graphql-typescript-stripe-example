@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Title } from "../../../ui/Title";
 import { Plan } from "./Plan";
+import { Delete, Update } from "../edit";
 
 export const Single = (plan: Plan) => {
   const {
@@ -23,6 +24,8 @@ export const Single = (plan: Plan) => {
       <div>{product}</div>
       <div>{trial_period_days}</div>
       <div>{usage_type}</div>
+      <Update />
+      <Delete />
     </div>
   );
 };

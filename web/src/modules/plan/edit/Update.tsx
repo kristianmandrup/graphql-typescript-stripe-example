@@ -2,7 +2,7 @@ import * as React from "react";
 import Form from "./Form";
 import { Title } from "../../../ui/Title";
 
-export const UpdatePlan = () => {
+export const Update = () => {
   const updatePlan = () => console.log("update plan");
 
   return (

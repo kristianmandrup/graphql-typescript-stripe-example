@@ -1,10 +1,6 @@
 import * as React from "react";
 import { Single } from "./Single";
-
-interface Product {
-  name: string;
-  type: string;
-}
+import { Product } from "./Product";
 
 interface Props {
   products: Product[];

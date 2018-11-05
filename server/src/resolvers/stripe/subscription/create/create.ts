@@ -3,11 +3,10 @@ import { getUser } from "../../../user";
 import { findUserInSession } from "../../common";
 import { stripeIdFromCustomer, updateCustomer } from "../../customer";
 import { updateUser } from "../../../../model/user/update";
-import { listBy } from "../list/list";
 
-const defaults = {
-  plan: process.env.PLAN
-};
+// const defaults = {
+//   plan: process.env.PLAN
+// };
 
 interface Item {
   plan: string;

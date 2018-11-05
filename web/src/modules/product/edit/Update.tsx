@@ -2,10 +2,10 @@ import * as React from "react";
 import Form from "./Form";
 import { Title } from "../../../ui/Title";
 
-export const CreateProduct = () => {
+export const Update = () => {
   return (
     <div>
-      <Title>Create product</Title>
+      <Title>Update product</Title>
       <Form />
     </div>
   );
