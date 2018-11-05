@@ -1,1 +1,1 @@
-export { default as CancelSubscription } from "./CancelSubscription";
+export { CancelSubscription } from "./CancelSubscription";

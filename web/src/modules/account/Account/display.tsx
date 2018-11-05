@@ -1,13 +1,12 @@
 import * as React from "react";
 import { ChangeCreditCard } from "../ChangeCreditCard";
-import { CancelSubscription } from "../CancelSubscription";
+import { CancelSubscription } from "../../subscriptions/cancel";
 
-export const display = (data: any) => {
+export const Display = (data: any) => {
   return (
-    <div>
-      <div>your current last 4 digits: {data.me.ccLast4}</div>
+    <>
       <ChangeCreditCard />
       <CancelSubscription />
-    </div>
+    </>
   );
 };

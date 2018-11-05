@@ -1,9 +1,9 @@
 import { meQuery } from "../../../graphql/queries/me";
 import { useApolloQuery } from "react-apollo-hooks";
-import { noData } from "./no-data";
-import { redirectTologin } from "./redirect-to-login";
-import { subscribeOnFreeTrial } from "./subscribe-on-free-trial";
-import { display } from "./display";
+import { NoData } from "./NoData";
+import { RedirectToLogin } from "./RedirectToLogin";
+import { SubscribeUser } from "../../subscriptions/create";
+import { Display } from "./display";
 
 type DataRenderer = (data: any) => any;
 
@@ -17,10 +17,5 @@ export default () => {
   const { data, loading } = useApolloQuery(meQuery);
   return loading
     ? null
-    : renderFirst(data, [
-        noData,
-        redirectTologin,
-        subscribeOnFreeTrial,
-        display
-      ]);
+    : renderFirst(data, [NoData, RedirectToLogin, SubscribeUser, Display]);
 };

@@ -1,9 +1,11 @@
 import * as React from "react";
 import StripeCheckout from "react-stripe-checkout";
-import { SubcriptionMutate, createSubscriptionMutation } from "./mutation";
+import { createSubscriptionMutation } from "./mutation";
 import { useApolloMutation } from "react-apollo-hooks";
 
-export const createSubscriptionMutater = (mutate: SubcriptionMutate) => {
+type MutateFn = ({ variables }: any) => void;
+
+export const createSubscriptionMutater = (mutate: MutateFn) => {
   return async (token: any) => {
     await mutate({
       variables: { source: token.id, ccLast4: token.card.last4 }
