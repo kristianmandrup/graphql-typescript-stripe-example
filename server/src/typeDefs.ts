@@ -85,11 +85,12 @@ export const typeDefs = gql`
     createPlan(currency: String, interval: String, product: String, nickname: String, amount: Number): Plan
     updatePlan(id: String!, currency: String, interval: String, product: String, nickname: String, amount: Number): Plan
     deletePlan(id: String!): Boolean!
+    listPlans(limit: Number!): Plan[]
 
-    createProduct(name: String!, type: String!): Product
-    
+    createProduct(name: String!, type: String!): Product    
     updateProduct(id: String!, name: String, caption: String, description: String): Product
     deleteProduct(id: String!): Boolean!
+    listProducts(limit: Number!): Product[]
 
     changeCreditCard(source: String!, ccLast4: String!): User    
   }
