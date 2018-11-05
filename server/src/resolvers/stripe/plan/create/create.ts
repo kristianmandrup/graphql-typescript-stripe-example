@@ -15,7 +15,11 @@ interface NewPlan {
   amount: number;
 }
 
-const createPlan = async (props: NewPlan) => {
+interface CreatedPlan {
+  id: string;
+}
+
+const createPlan = async (props: NewPlan): Promise<CreatedPlan> => {
   props = {
     ...defaults.plan,
     ...props
@@ -23,6 +27,7 @@ const createPlan = async (props: NewPlan) => {
   return await stripe.plans.create(props);
 };
 
-export const create = async (_: any, props: any, __: any) => {
-  return await createPlan(props);
+export const create = async (_: any, props: any, __: any): Promise<string> => {
+  const { id } = await createPlan(props);
+  return id;
 };
