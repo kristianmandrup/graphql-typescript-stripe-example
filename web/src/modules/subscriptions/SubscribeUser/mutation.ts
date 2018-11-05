@@ -1,10 +1,5 @@
-import { MutationFn } from "react-apollo";
 import { userFragment } from "../../../graphql/fragments/userFragment";
 import { gql } from "apollo-boost";
-import {
-  CreateSubscriptionMutation,
-  CreateSubscriptionMutationVariables
-} from "../../../schemaTypes";
 
 // Note: UserInfo - see userFragment
 export const createSubscriptionMutation = gql`
@@ -16,8 +11,3 @@ export const createSubscriptionMutation = gql`
 
   ${userFragment}
 `;
-
-export type SubcriptionMutate = MutationFn<
-  CreateSubscriptionMutation,
-  CreateSubscriptionMutationVariables
->;
