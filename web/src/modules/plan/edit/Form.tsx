@@ -1,13 +1,13 @@
 import * as React from "react";
-import { RedButton } from "../../../ui/RedButton";
+import { Button } from "@material-ui/core";
 import { createInput } from "../../../ui/form/input";
 import { useInputValue } from "../../../ui/form/useInputValue";
 
 const createSubmitBtn = ({ onSubmit, state, key, buttonText }: any) => {
   return (
-    <RedButton key={key} onClick={() => onSubmit(state)}>
+    <Button key={key} onClick={() => onSubmit(state)}>
       {buttonText}
-    </RedButton>
+    </Button>
   );
 };
 
