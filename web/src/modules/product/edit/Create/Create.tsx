@@ -1,5 +1,5 @@
 import * as React from "react";
-import Form from "../Form";
+import { Form } from "../Form";
 import { Title } from "../../../../ui/Title";
 import { createProductMutation } from "./mutation";
 import { useApolloMutation } from "react-apollo-hooks";

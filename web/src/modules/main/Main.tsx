@@ -32,7 +32,7 @@ export const MainContent = (props: any) => {
         <Route path="/account" component={Account} />
         <Route path="/admin" component={Admin} />
         <Route path="/paid-users" component={PaidUsers} />
-        <Route exact={true} path="/" render={Home} />
+        <Route exact={true} path="/" component={Home} />
       </div>
     </>
   );

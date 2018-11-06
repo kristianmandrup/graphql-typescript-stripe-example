@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Single } from "./Single";
 import { Subscription } from "./Subscription";
-import { listSubscriptionsQuery } from "./mutation";
+import { listSubscriptionsQuery } from "./query";
 import { useApolloMutation } from "react-apollo-hooks";
 
 interface Props {
