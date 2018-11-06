@@ -1,0 +1,16 @@
+  type Query {
+    listSubscriptions(plan: String!): Subscription[]
+    listProducts(limit: Number): Product[]
+
+  type Mutation {
+    createInvoice(customer: String!, items: InvoiceItem[], billing: String, days_until_due: Number): Boolean
+
+    createPlan(currency: String, interval: String, product: String, nickname: String, amount: Number): Plan
+    updatePlan(id: String!, currency: String, interval: String, product: String, nickname: String, amount: Number): Plan
+    deletePlan(id: String!): Boolean!
+    listPlans(limit: Number!): Plan[]
+
+    createProduct(name: String!, type: String!): Product    
+    updateProduct(id: String!, name: String, caption: String, description: String): Product
+    deleteProduct(id: String!): Boolean!
+    listProducts(limit: Number!): Product[]
