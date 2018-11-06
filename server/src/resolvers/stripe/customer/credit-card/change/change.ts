@@ -1,6 +1,6 @@
-import { stripe } from "../../stripe";
-import { findPaidUser } from "../../common/user/find";
-import { getUser } from "../../../user";
+import { stripe } from "../../../stripe";
+import { findPaidUser } from "../../../common/user/find";
+import { getUser } from "../../../../user";
 
 const updateCustomer = async (stripeId: string, source: any) => {
   await stripe.customers.update(stripeId, { source });

@@ -14,6 +14,7 @@
     "graphql-request": "^1.8.2",
     "jest": "^23.6.0",
     "nodemon": "^1.18.4",
+    "start-server-and-test": "^1.7.8",
     "ts-jest": "^23.10.4",
     "ts-node": "7.0.1",
     "typescript": "^3.1.6"
@@ -34,7 +35,8 @@
     "start": "nodemon --exec ts-node src/index.ts",
     "up": "docker-compose up",
     "build": "tsc -b",
-    "test": "jest"
+    "test": "jest --forceExit",
+    "ci": "start-server-and-test start-server http://localhost:4000 test"
   },
   "jest": {
     "preset": "ts-jest"

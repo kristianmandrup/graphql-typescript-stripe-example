@@ -37,6 +37,12 @@
     "@types/react-router-dom": "^4.3.1",
     "@types/styled-components": "^3.0.1",
     "apollo": "^1.9.2",
+    "apollo-link-http": "^1.5.5",
+    "apollo-mocknetworkinterface": "^2.0",
+    "apollo-test-utils": "^0.3.2",
+    "faker": "^4.1.0",
+    "graphql-tools": "^4.0.3",
+    "react-test-renderer": "^16.6.0",
     "ts-jest": "^23.10.4",
     "typescript": "^3.1.1"
   },
