@@ -1,13 +1,13 @@
 import * as React from "react";
-import { RedButton } from "../../../ui/RedButton";
-import { createInput } from "../../../ui/form/input";
-import { useInputValue } from "../../../ui/form/useInputValue";
+import { SubmitButton, form } from "../../../ui";
+const { createInput, useInputValue } = form;
+import {} from "../../../ui/form/useInputValue";
 
-const createSubmitBtn = ({ onSubmit, state, key, buttonText }: any) => {
+const createSubmitBtn = ({ onSubmit, state, name, buttonText }: any) => {
   return (
-    <RedButton key={key} onClick={() => onSubmit(state)}>
+    <SubmitButton name={name} onClick={() => onSubmit(state)}>
       {buttonText}
-    </RedButton>
+    </SubmitButton>
   );
 };
 
@@ -33,14 +33,14 @@ export default ({ buttonText = "submit", onSubmit }: any) => {
 
   const submitButton = createSubmitBtn({
     onSubmit,
-    key: "submit",
+    name: "submit",
     state: { name: name.value, type: type.value },
     buttonText
   });
-  const form = [nameInput, typeInput, submitButton];
+  const inputs = [nameInput, typeInput, submitButton];
   return (
-    <div style={{}}>
-      <div>{form}</div>
+    <div>
+      <div>{inputs}</div>
     </div>
   );
 };
