@@ -1,7 +1,6 @@
 import * as React from "react";
-import { RedButton } from "../../../../ui/RedButton";
-import { createInput } from "../../../../ui/form/input";
-import { useInputValue } from "../../../../ui/form/useInputValue";
+import { SubmitButton, form } from "../../../../ui";
+const { useInputValue, createInput } = form;
 
 const style: any = {
   display: "flex",
@@ -12,9 +11,9 @@ const style: any = {
 
 const createSubmitBtn = ({ onSubmit, state, name, key, buttonText }: any) => {
   return (
-    <RedButton name={name} key={key || name} onClick={() => onSubmit(state)}>
+    <SubmitButton name={name} onClick={() => onSubmit(state)}>
       {buttonText}
-    </RedButton>
+    </SubmitButton>
   );
 };
 
@@ -37,10 +36,10 @@ export default ({ buttonText = "submit", onSubmit }: any) => {
     state: { email: email.value, password: password.value },
     buttonText
   });
-  const form = [emailInput, passwordInput, submitButton];
+  const inputs = [emailInput, passwordInput, submitButton];
   return (
     <div style={style}>
-      <div>{form}</div>
+      <div>{inputs}</div>
     </div>
   );
 };

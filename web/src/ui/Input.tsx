@@ -1,65 +1,70 @@
 import * as React from "react";
-import styled from "styled-components";
+import { withStyles, Theme, createStyles } from "@material-ui/core/styles";
+import { InputAdornment, IconButton, InputLabel } from "@material-ui/core";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
-interface Props
-  extends React.DetailedHTMLProps<
-      React.InputHTMLAttributes<HTMLInputElement>,
-      HTMLInputElement
-    > {
-  label: string;
-}
+const styles = (theme: Theme) =>
+  createStyles({
+    container: {
+      display: "flex",
+      flexWrap: "wrap"
+    },
+    textField: {
+      marginLeft: theme.spacing.unit,
+      marginRight: theme.spacing.unit,
+      width: 200
+    },
+    dense: {
+      marginTop: 19
+    },
+    menu: {
+      width: 200
+    }
+  });
 
-const Label = styled("div")`
-  font-size: 11px;
-  line-height: 16px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: rgba(55, 53, 47, 0.6);
-  font-weight: 500;
-`;
+export const TextInput = ({
+  name,
+  key,
+  type,
+  label,
+  placeholder,
+  value,
+  handleChange,
+  ...props
+}) => {
+  const [showPassword, setShowPassword] = React.useState(false);
+  const handleClickShowPassword = () => setShowPassword(!!showPassword);
 
-const InputContainer = styled("div")`
-  display: flex;
-  max-width: 20em;
-  align-items: center;
-  width: 100%;
-  font-size: 15px;
-  line-height: 26px;
-  padding: 4px 0px;
-  border-radius: 3px;
-  box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px inset,
-    rgba(15, 15, 15, 0.1) 0px 1px 1px inset;
-  background: rgb(255, 255, 255);
-  cursor: text;
-  margin-top: 4px;
-  margin-bottom: 4px;
-`;
-
-const InputWithoutBorder = styled("input")`
-  font-size: inherit;
-  line-height: inherit;
-  border: none;
-  background: none;
-  width: 100%;
-  display: block;
-  resize: none;
-  padding: 0px;
-  &::placeholder {
-    color: #b6b6b5;
-    font-weight: 200;
-  }
-`;
-
-export class Input extends React.PureComponent<Props> {
-  render() {
-    const { label, ...inputProps } = this.props;
-    return (
-      <div>
-        <Label>{label}</Label>
-        <InputContainer>
-          <InputWithoutBorder {...inputProps as any} />
-        </InputContainer>
-      </div>
+  const endAdornment =
+    type === "password" ? (
+      undefined
+    ) : (
+      <InputAdornment position="end">
+        <IconButton
+          aria-label="Toggle password visibility"
+          onClick={handleClickShowPassword}
+        >
+          {showPassword ? <Visibility /> : <VisibilityOff />}
+        </IconButton>
+      </InputAdornment>
     );
-  }
-}
+
+  const { classes } = props;
+  return (
+    <div>
+      <InputLabel htmlFor={name}>{label}</InputLabel>
+      <Input
+        id={name}
+        type={type}
+        className={classes.textField}
+        value={value}
+        onChange={handleChange}
+        margin="normal"
+        endAdornment={endAdornment}
+      />
+    </div>
+  );
+};
+
+export const Input = withStyles(styles)(TextInput);

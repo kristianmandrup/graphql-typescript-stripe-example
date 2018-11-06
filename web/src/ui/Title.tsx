@@ -1,9 +1,6 @@
-import styled from "styled-components";
+import * as React from "react";
+import Typography from "@material-ui/core/Typography";
 
-export const Title = styled("div")`
-  font-size: 1.5em;
-  display: inline-flex;
-  justify-content: center;
-  color: gray;
-  margin-bottom: 0.5em;
-`;
+export const Title = ({ children }: any) => (
+  <Typography variant="h3">{children}</Typography>
+);
