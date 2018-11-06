@@ -6,5 +6,5 @@ export const startServer = async () => {
   const server = createServer({
     mockEntireSchema: true
   });
-  createApp(server);
+  return await createApp(server);
 };

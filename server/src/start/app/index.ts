@@ -6,9 +6,9 @@ import { createServer } from "./server";
 
 export { createServer };
 
-export const createApp = server => {
+export const createApp = async server => {
   const app = express();
   createSession(app);
   addCors(app);
-  listen({ app, server });
+  return await listen({ app, server });
 };
