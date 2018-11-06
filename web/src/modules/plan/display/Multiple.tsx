@@ -13,9 +13,9 @@ interface Props {
 
 export const PlansError = () => <div>Error: Plans query</div>;
 
-export const Query = (query: any) => {
-  console.log({ query: listPlansQuery });
-  const { data, error } = useApolloQuery(listPlansQuery);
+export const Query = ({ variables = { limit: 10 } }: any) => {
+  console.log({ variables });
+  const { data, error } = useApolloQuery(listPlansQuery, { variables });
   if (error) {
     console.log({ error });
   }

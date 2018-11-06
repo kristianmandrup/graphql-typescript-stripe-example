@@ -10,8 +10,9 @@ interface Props {
 
 export const ProductsError = () => <div>Error: Products query</div>;
 
-export const Query = (query: any) => {
-  const { data, error } = useApolloMutation(listProductsQuery);
+export const Query = ({ variables = { limit: 10 } }: any) => {
+  console.log({ variables });
+  const { data, error } = useApolloMutation(listProductsQuery, { variables });
   if (error) {
     console.log({ error });
   }
