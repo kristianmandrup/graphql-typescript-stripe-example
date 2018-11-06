@@ -20,9 +20,11 @@ export const Home = (props: any) => {
   return (
     <div>
       <Tabs value={tabIndex} onChange={handleChange}>
+        <Tab label="Home" />
         <Tab label="Plans" />
       </Tabs>
-      {tabIndex === 0 && (
+      {tabIndex === 0 && <TabContainer>Home</TabContainer>}
+      {tabIndex === 1 && (
         <TabContainer>
           <Query admin={false} />
         </TabContainer>
