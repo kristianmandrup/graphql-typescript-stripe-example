@@ -4,7 +4,8 @@ import { Home } from "./Home";
 import { PaidUsers, Account, RegisterView } from "../";
 import { Admin } from "./Admin";
 import { AppBar } from "./AppBar";
-import { StyledBottomBar } from "./BottomBar";
+import { LoginView } from "../user";
+// import { StyledBottomBar } from "./BottomBar";
 import { meQuery } from "../../graphql/queries/me";
 import { useApolloQuery } from "react-apollo-hooks";
 import { withStyles } from "@material-ui/core/styles";
@@ -22,18 +23,17 @@ export const MainContent = (props: any) => {
   if (error) {
     return <div className="error">Error: ${JSON.stringify(error)}</div>;
   }
-
   return (
     <>
       <AppBar {...props} loggedIn={loggedIn} />
       <div className="content">
         <Route path="/register" component={RegisterView} />
+        <Route path="/login" component={LoginView} />
         <Route path="/account" component={Account} />
         <Route path="/admin" component={Admin} />
         <Route path="/paid-users" component={PaidUsers} />
         <Route exact={true} path="/" render={Home} />
       </div>
-      <StyledBottomBar {...props} />
     </>
   );
 };

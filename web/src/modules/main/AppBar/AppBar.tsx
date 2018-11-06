@@ -1,14 +1,9 @@
 import * as React from "react";
 import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
 import { withStyles } from "@material-ui/core/styles";
-import Search from "./Search";
 import { styles } from "./styles";
-import { Desktop, Mobile } from "./TopBar";
-import { Title } from "./Title";
-import { MoreBtn } from "./MoreBtn";
-import { DrawerBtn } from "./DrawerBtn";
-import { DesktopSection } from "./DesktopSection/DesktopSection";
+import { Desktop, Mobile } from "./Menu";
+import { TopToolbar } from "./TopToolbar";
 
 interface Props {
   classes: any;
@@ -50,40 +45,39 @@ class PrimarySearchAppBar extends React.Component<Props> {
         isLoggedIn,
         anchorEl,
         isMenuOpen,
-        handleMenuClose: this.handleMenuClose
+        handleMenuClose: this.handleMenuClose,
+        classes
       },
       mobileMenu: {
         isLoggedIn,
         anchorEl: mobileMoreAnchorEl,
         isMenuOpen: isMobileMenuOpen,
         handleMenuClose: this.handleMenuClose,
-        handleProfileMenuOpen: this.handleProfileMenuOpen
+        handleProfileMenuOpen: this.handleProfileMenuOpen,
+        classes
       },
-      desktop: {
-        isLoggedIn,
-        isMenuOpen,
-        handleProfileMenuOpen: this.handleProfileMenuOpen
-      },
-      more: {
-        classes,
-        handleMobileMenuOpen: this.handleMobileMenuOpen
+      topbar: {
+        desktop: {
+          isLoggedIn,
+          isMenuOpen,
+          handleProfileMenuOpen: this.handleProfileMenuOpen,
+          classes
+        },
+        more: {
+          handleMobileMenuOpen: this.handleMobileMenuOpen,
+          classes
+        },
+        classes
       }
     };
-
+    console.log("AppBar", { isLoggedIn, props });
     return (
       <div className={classes.root}>
         <AppBar position="static">
-          <Toolbar>
-            <DrawerBtn classes={classes} />
-            <Title classes={classes} />
-            <Search />
-            <div className={classes.grow} />
-            <DesktopSection {...props.desktop} />
-            <MoreBtn {...props.more} />
-          </Toolbar>
+          <TopToolbar {...props.topbar} />
         </AppBar>
-        <Desktop.TopBar {...props.menu} />
-        <Mobile.TopBar {...props.mobileMenu} />
+        <Desktop.BarMenu {...props.menu} />
+        <Mobile.BarMenu {...props.mobileMenu} />
       </div>
     );
   }

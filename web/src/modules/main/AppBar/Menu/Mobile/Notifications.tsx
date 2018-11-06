@@ -7,7 +7,7 @@ import Badge from "@material-ui/core/Badge";
 export const NotificationsItem = () => (
   <MenuItem>
     <IconButton color="inherit">
-      <Badge badgeContent={11} color="secondary">
+      <Badge badgeContent={3} color="secondary">
         <NotificationsIcon />
       </Badge>
     </IconButton>

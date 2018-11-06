@@ -11,5 +11,6 @@ export const MoreBtn = ({ classes, handleMobileMenuOpen }: any) => (
     >
       <MoreIcon />
     </IconButton>
+    More
   </div>
 );

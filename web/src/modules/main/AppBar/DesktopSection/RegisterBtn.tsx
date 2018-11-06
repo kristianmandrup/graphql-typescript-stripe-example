@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export const RegisterBtn = ({ isLoggedIn }: any) => {
   return isLoggedIn ? null : (
-    <Link to="/register">
+    <Link to="/register" className="link">
       <IconButton color="inherit">
         <RegisterIcon />
       </IconButton>

@@ -12,4 +12,12 @@ export const GlobalStyle = createGlobalStyle`
     color: #0d0d0d;
     text-decoration: none;
   }
+
+  a.link {
+    color: white;
+  }
+
+  .content {
+    padding: 1em
+  }
 `;

@@ -1,7 +1,6 @@
 import * as React from "react";
 import Menu from "@material-ui/core/Menu";
 import { ProfileMenuItem } from "./Profile";
-import { LoggedInMenuItem } from "./LoggedIn";
 import { AccountMenuItem } from "./Account";
 import { LogoutMenuItem } from "./Logout";
 
@@ -12,12 +11,13 @@ interface Props {
   handleMenuClose: () => void;
 }
 
-export const TopBar = ({
+export const BarMenu = ({
   anchorEl,
   isMenuOpen,
   handleMenuClose,
   isLoggedIn
 }: Props) => {
+  console.log("Desktop:TopBar", { isLoggedIn });
   const props = { handleMenuClose, isLoggedIn };
   return (
     <Menu
@@ -29,7 +29,6 @@ export const TopBar = ({
     >
       <ProfileMenuItem {...props} />
       <AccountMenuItem {...props} />
-      <LoggedInMenuItem {...props} />
       <LogoutMenuItem {...props} />
     </Menu>
   );

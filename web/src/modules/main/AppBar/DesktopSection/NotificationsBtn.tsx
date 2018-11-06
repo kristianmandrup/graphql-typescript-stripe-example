@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export const NotificationsBtn = ({ isLoggedIn }: any) => {
   return !isLoggedIn ? null : (
-    <Link to="/notifications">
+    <Link to="/notifications" className="link">
       <IconButton color="inherit">
         <Badge badgeContent={3} color="secondary">
           <NotificationsIcon />

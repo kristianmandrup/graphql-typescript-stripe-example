@@ -55,7 +55,7 @@ export const typeDefs = gql`
   }
 
   interface InvoiceItem {
-    plan: string;
+    plan: String;
   }
 
   type Invoice {
@@ -80,7 +80,9 @@ export const typeDefs = gql`
     updateSubcription(id: String!, plan: String!)
     cancelSubscription: User
         
-    createInvoice(customer: String!, items: InvoiceItem[], billing: String, days_until_due: Number)
+    changeCreditCard(source: String!, ccLast4: String!): User    
+
+    createInvoice(customer: String!, items: InvoiceItem[], billing: String, days_until_due: Number): Boolean
 
     createPlan(currency: String, interval: String, product: String, nickname: String, amount: Number): Plan
     updatePlan(id: String!, currency: String, interval: String, product: String, nickname: String, amount: Number): Plan
@@ -91,7 +93,5 @@ export const typeDefs = gql`
     updateProduct(id: String!, name: String, caption: String, description: String): Product
     deleteProduct(id: String!): Boolean!
     listProducts(limit: Number!): Product[]
-
-    changeCreditCard(source: String!, ccLast4: String!): User    
   }
 `;

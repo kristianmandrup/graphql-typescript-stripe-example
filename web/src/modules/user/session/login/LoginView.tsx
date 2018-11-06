@@ -7,10 +7,10 @@ import { loginMutation } from "./mutation";
 const update = () => {
   return (cache: any, { data }: any) => {
     if (!data || !data.login) {
+      console.log("missing data for login");
       return;
     }
     const { login } = data;
-
     console.log("update: login add me to query cache", { login });
     cache.writeQuery({
       query: meQuery,

@@ -13,7 +13,7 @@ export const createSubscriptionMutater = (mutate: MutateFn) => {
   };
 };
 
-export const ProductCheckout = (props: any) => {
+export const Checkout = (props: any) => {
   const { amount, stripeKey } = props;
   const subscribe = useApolloMutation(createSubscriptionMutation);
   const onToken = createSubscriptionMutater(subscribe);
@@ -26,5 +26,5 @@ export const ProductCheckout = (props: any) => {
 // TODO: Add multiple products each with separate Stripe Key
 export const Create = () => {
   const stripeKey = process.env.REACT_APP_STRIPE_PUBLISHABLE!;
-  return <ProductCheckout amount={1000} stripeKey={stripeKey} />;
+  return <Checkout amount={1000} stripeKey={stripeKey} />;
 };

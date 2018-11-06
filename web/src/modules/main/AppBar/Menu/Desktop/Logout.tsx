@@ -5,6 +5,7 @@ import IconButton from "@material-ui/core/IconButton";
 import { LogoutView } from "../../../../user/session/logout/LogoutView";
 
 export const LogoutMenuItem = ({ handleMenuClose, isLoggedIn }: any) => {
+  console.log("login", { isLoggedIn });
   return !isLoggedIn ? null : (
     <MenuItem onClick={handleMenuClose}>
       <IconButton color="inherit">

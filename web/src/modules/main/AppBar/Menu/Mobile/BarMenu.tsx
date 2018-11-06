@@ -10,7 +10,7 @@ interface Props {
   handleMenuClose: () => void;
 }
 
-export const TopBar = ({
+export const BarMenu = ({
   anchorEl,
   isMenuOpen,
   handleMenuClose,
