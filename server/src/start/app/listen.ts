@@ -1,15 +1,17 @@
-import { server } from "./server";
-
 type Config = {
   host?: string;
   port?: number;
   log?: any;
 };
 
-export const listen = (
-  app: any,
-  { host = "localhost", port = 4000, log = console.log }: Config = {}
-) => {
+type ListenConfig = {
+  server: any;
+  app: any;
+  config?: Config;
+};
+
+export const listen = ({ server, app, config }: ListenConfig) => {
+  const { host = "localhost", port = 4000, log = console.log } = config || {};
   app.listen({ port }, () =>
     log(`🚀 Server ready at http://${host}:${port}${server.graphqlPath}`)
   );
