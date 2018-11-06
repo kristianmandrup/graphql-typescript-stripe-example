@@ -1,2 +1,3 @@
-export { CreateProduct } from "./create";
-export { Multiple as DisplayProducts } from "./display";
+import * as edit from "./edit";
+import * as display from "./display";
+export { edit, display };

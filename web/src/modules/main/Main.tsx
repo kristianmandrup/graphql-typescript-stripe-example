@@ -24,9 +24,9 @@ export const MainContent = (props: any) => {
   }
 
   return (
-    <React.Fragment>
+    <>
       <AppBar {...props} loggedIn={loggedIn} />
-      <div>
+      <div className="content">
         <Route path="/register" component={RegisterView} />
         <Route path="/account" component={Account} />
         <Route path="/admin" component={Admin} />
@@ -34,7 +34,7 @@ export const MainContent = (props: any) => {
         <Route exact={true} path="/" render={Home} />
       </div>
       <StyledBottomBar {...props} />
-    </React.Fragment>
+    </>
   );
 };
 

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { CreateProduct, DisplayProducts } from "../../product";
+import { edit, display } from "../../product";
 const products = [
   {
     name: "xyz",
@@ -9,7 +9,7 @@ const products = [
 
 export const Products = () => (
   <div>
-    <CreateProduct />
-    <DisplayProducts products={products} />
+    <edit.Create />
+    <display.Multiple products={products} />
   </div>
 );

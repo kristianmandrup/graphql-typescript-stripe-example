@@ -1,4 +1,4 @@
-import { userFragment } from "../../../graphql/fragments/userFragment";
+import { userFragment } from "../../../../graphql/fragments/userFragment";
 import { gql } from "apollo-boost";
 
 // Note: UserInfo - see userFragment

@@ -4,8 +4,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import { withStyles } from "@material-ui/core/styles";
 import Search from "./Search";
 import { styles } from "./styles";
-import { TopBarMenu } from "./Menu";
-import { TopBarMobileMenu } from "./MobileMenu";
+import { Desktop, Mobile } from "./TopBar";
 import { Title } from "./Title";
 import { MoreBtn } from "./MoreBtn";
 import { DrawerBtn } from "./DrawerBtn";
@@ -83,8 +82,8 @@ class PrimarySearchAppBar extends React.Component<Props> {
             <MoreBtn {...props.more} />
           </Toolbar>
         </AppBar>
-        <TopBarMenu {...props.menu} />
-        <TopBarMobileMenu {...props.mobileMenu} />
+        <Desktop.TopBar {...props.menu} />
+        <Mobile.TopBar {...props.mobileMenu} />
       </div>
     );
   }

@@ -24,7 +24,7 @@ export const ProductCheckout = (props: any) => {
 };
 
 // TODO: Add multiple products each with separate Stripe Key
-export default () => {
+export const Create = () => {
   const stripeKey = process.env.REACT_APP_STRIPE_PUBLISHABLE!;
   return <ProductCheckout amount={1000} stripeKey={stripeKey} />;
 };

@@ -2,8 +2,8 @@ import { meQuery } from "../../../graphql/queries/me";
 import { useApolloQuery } from "react-apollo-hooks";
 import { NoData } from "./NoData";
 import { RedirectToLogin } from "./RedirectToLogin";
-import { SubscribeUser } from "../../subscriptions/create";
-import { Display } from "./display";
+import { Display } from "./Display";
+import { edit } from "../../subscriptions";
 
 type DataRenderer = (data: any) => any;
 
@@ -13,9 +13,9 @@ const renderFirst = (data: any, funs: DataRenderer[]) => {
   return found ? found(data) : null;
 };
 
-export default () => {
+export const Account = () => {
   const { data, loading } = useApolloQuery(meQuery);
   return loading
     ? null
-    : renderFirst(data, [NoData, RedirectToLogin, SubscribeUser, Display]);
+    : renderFirst(data, [NoData, RedirectToLogin, edit.Create, Display]);
 };

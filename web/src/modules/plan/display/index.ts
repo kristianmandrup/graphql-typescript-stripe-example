@@ -1,2 +1,2 @@
 export { Single } from "./Single";
-export { Multiple } from "./Multiple";
+export { Multiple, Query } from "./Multiple";

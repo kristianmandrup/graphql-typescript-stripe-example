@@ -3,7 +3,7 @@ import { useApolloMutation } from "react-apollo-hooks";
 import { cancelSubscriptionMutation } from "./mutation";
 import { Button } from "@material-ui/core";
 
-export const CancelSubscription = () => {
+export const Delete = () => {
   const mutate = useApolloMutation(cancelSubscriptionMutation);
   return <Button onClick={() => mutate()}>Cancel subscription</Button>;
 };

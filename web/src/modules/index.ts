@@ -3,5 +3,6 @@ export { RegisterView } from "./user/register";
 export { Account, PaidUsers } from "./account";
 export { Main } from "./main";
 // admin
-export { CreatePlan } from "./plan";
-export { CreateProduct, DisplayProducts } from "./product";
+import * as plan from "./plan";
+import * as product from "./product";
+export { plan, product };
