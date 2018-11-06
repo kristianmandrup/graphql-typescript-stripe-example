@@ -23,7 +23,7 @@ export const style = {
 // product,
 // nickname,
 // amount
-export const Form = ({ buttonText = "submit", onSubmit }: any) => {
+export const Form = ({ buttonText = "submit", mutate }: any) => {
   const { ...nickname } = useInputValue("");
   const { ...amount } = useInputValue("");
   const { ...product } = useInputValue("");
@@ -47,7 +47,7 @@ export const Form = ({ buttonText = "submit", onSubmit }: any) => {
   });
 
   const submitButton = createSubmitBtn({
-    onSubmit,
+    onSubmit: mutate,
     key: "submit",
     state: {
       nickname: nickname.value,
@@ -57,7 +57,7 @@ export const Form = ({ buttonText = "submit", onSubmit }: any) => {
     },
     buttonText
   });
-  const form = [
+  const inputs = [
     nameInput,
     amountInput,
     productInput,
@@ -65,8 +65,8 @@ export const Form = ({ buttonText = "submit", onSubmit }: any) => {
     submitButton
   ];
   return (
-    <div style={{}}>
-      <div>{form}</div>
+    <div>
+      <div>{inputs}</div>
     </div>
   );
 };

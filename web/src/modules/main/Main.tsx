@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Route } from "react-router-dom";
 import { Home } from "./Home";
-import { PaidUsers, Account, RegisterView } from "../";
+import { PaidUsers, Account, RegisterCustomer } from "../";
 import { Admin } from "./Admin";
 import { AppBar } from "./AppBar";
 import { LoginView } from "../user";
@@ -27,7 +27,7 @@ export const MainContent = (props: any) => {
     <>
       <AppBar {...props} loggedIn={loggedIn} />
       <div className="content">
-        <Route path="/register" component={RegisterView} />
+        <Route path="/register" component={RegisterCustomer} />
         <Route path="/login" component={LoginView} />
         <Route path="/account" component={Account} />
         <Route path="/admin" component={Admin} />

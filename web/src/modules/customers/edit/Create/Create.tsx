@@ -1,9 +1,9 @@
 import * as React from "react";
 import { useApolloMutation } from "react-apollo-hooks";
 import { registerMutation } from "./mutation";
-import { CredentialsForm } from "../form";
+import { CredentialsForm } from "../../../user/form";
 
-export default ({ history }: any) => {
+export const Create = ({ history }: any) => {
   const register = useApolloMutation(registerMutation);
   const props = {
     history,

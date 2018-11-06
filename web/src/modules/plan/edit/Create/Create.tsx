@@ -5,11 +5,11 @@ import { createPlanMutation } from "./mutation";
 import { useApolloMutation } from "react-apollo-hooks";
 
 export const Create = () => {
-  const createPlan = useApolloMutation(createPlanMutation);
+  const mutate = useApolloMutation(createPlanMutation);
   return (
     <div>
       <Title>Create plan</Title>
-      <Form mutate={createPlan} />
+      <Form mutate={mutate} />
     </div>
   );
 };

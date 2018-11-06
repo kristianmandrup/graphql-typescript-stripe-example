@@ -18,7 +18,7 @@ export const style = {
   justifyContent: "center"
 };
 
-export default ({ buttonText = "submit", onSubmit }: any) => {
+export const Form = ({ buttonText = "submit", mutate }: any) => {
   const { ...name } = useInputValue("");
   const { ...type } = useInputValue("");
 
@@ -32,7 +32,7 @@ export default ({ buttonText = "submit", onSubmit }: any) => {
   });
 
   const submitButton = createSubmitBtn({
-    onSubmit,
+    onSubmit: mutate,
     name: "submit",
     state: { name: name.value, type: type.value },
     buttonText
