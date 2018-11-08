@@ -68,7 +68,8 @@ export const typeDefs = gql`
   type Query {
     me: User
     listSubscriptions(plan: String!): Subscription[]
-    listProducts(limit: Number): Product[]
+    listProducts(limit: Number!): Product[]
+    listPlans(limit: Number!): Plan[]
   }
 
   type Mutation {
@@ -87,11 +88,10 @@ export const typeDefs = gql`
     createPlan(currency: String, interval: String, product: String, nickname: String, amount: Number): Plan
     updatePlan(id: String!, currency: String, interval: String, product: String, nickname: String, amount: Number): Plan
     deletePlan(id: String!): Boolean!
-    listPlans(limit: Number!): Plan[]
+    
 
     createProduct(name: String!, type: String!): Product    
     updateProduct(id: String!, name: String, caption: String, description: String): Product
-    deleteProduct(id: String!): Boolean!
-    listProducts(limit: Number!): Product[]
+    deleteProduct(id: String!): Boolean!    
   }
 `;

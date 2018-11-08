@@ -1,10 +1,12 @@
 import { gql } from "apollo-boost";
+import { planFragment } from "../../../graphql/fragments/planFragment";
 
-// TODO: use PlanInfo fragment
 export const listPlansQuery = gql`
   query ListPlansQuery($limit: Int!) {
     listPlans(limit: $limit) {
-      id
+      ...PlanInfo
     }
+
+    ${planFragment}
   }
 `;
