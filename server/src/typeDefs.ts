@@ -80,6 +80,7 @@ export const typeDefs = gql`
     createSubcription(source: String!, ccLast4: String!, startAt: String): User
     updateSubcription(id: String!, plan: String!)
     cancelSubscription: User
+    reactivateSubcription(id: String!): Boolean
         
     changeCreditCard(source: String!, ccLast4: String!): User    
 
