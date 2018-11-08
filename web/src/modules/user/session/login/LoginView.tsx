@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useApolloMutation, useApolloClient } from "react-apollo-hooks";
-import { meQuery } from "../../../../graphql/queries/me";
+import { meQuery } from "../../queries";
 import { CredentialsForm } from "../../form";
 import { loginMutation } from "./mutation";
 

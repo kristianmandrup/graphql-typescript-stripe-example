@@ -1,4 +1,4 @@
-import { meQuery } from "../../../graphql/queries/me";
+import { meQuery } from "../queries";
 import { useApolloQuery } from "react-apollo-hooks";
 import { NoData } from "./NoData";
 import { RedirectToLogin } from "./RedirectToLogin";
