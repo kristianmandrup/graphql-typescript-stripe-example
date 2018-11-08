@@ -89,7 +89,6 @@ export const typeDefs = gql`
     updatePlan(id: String!, currency: String, interval: String, product: String, nickname: String, amount: Number): Plan
     deletePlan(id: String!): Boolean!
     
-
     createProduct(name: String!, type: String!): Product    
     updateProduct(id: String!, name: String, caption: String, description: String): Product
     deleteProduct(id: String!): Boolean!    

@@ -1,11 +1,11 @@
 import { stripe } from "../../stripe";
 
-interface ListProductsQuery {
-  limit: number;
-}
+// interface ListProductsQuery {
+//   limit: number;
+// }
 
-export const listProducts = async (props: ListProductsQuery) =>
+export const listProducts = async (props: any) =>
   await stripe.products.list(props);
 
-export const list = async (_: any, props: ListProductsQuery, __: any) =>
+export const list = async (_: any, props: any, __: any) =>
   await listProducts(props);
