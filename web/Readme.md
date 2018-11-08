@@ -66,9 +66,10 @@ Go to [Stripe Testing cards](https://stripe.com/docs/testing#cards) and use the 
 
 See [Video clip: on using fake cards](https://www.youtube.com/watch?v=Yr6HOyWUCgE&t=5m0s)
 
-## Queries
+## Apollo Queries, Mutation and state
 
 Videos
 
 - [Apollo Query component](https://www.youtube.com/watch?v=YHJ2CaS0vpM&feature=youtu.be)
 - [Apollo Mutation component](https://www.youtube.com/watch?v=2SYa0F50Mb4)
+- [Apollo state management](https://www.youtube.com/watch?v=2RvRcnD8wHY)
