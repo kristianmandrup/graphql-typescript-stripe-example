@@ -106,3 +106,7 @@ Cancel subscription only makes sense if user has already paid for a subscription
 
 - destroy user session on server
 - clear cookie on request
+
+## Resolvers
+
+See [Resolvers](./Resolvers.md)
