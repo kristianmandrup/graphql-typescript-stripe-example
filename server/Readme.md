@@ -15,9 +15,22 @@ Build docker image using `Dockerfile` and tag it as: `stripe-example-multi-stage
 
 - `docker build -t stripe-example-multi-stage .`
 
-Now we can reference that image from within `docker-compose.yml` :)
+The `web` service in `docker-compose.yml` is based on the `stripe-example-multi-stage`
 
-If the image builds without error, you should be able to run:
+```yml
+services:
+  db:
+    image: postgres
+    # ...
+  web:
+    image: stripe-example-multi-stage
+    depends_on:
+      - db
+    ports:
+      - "4000:4000"
+```
+
+If the docker image `stripe-example-multi-stage` builds without error, you should be able to run:
 
 - `docker-compose up`
 
@@ -25,7 +38,11 @@ Which will run the `db` image `postgres` AND the `web` image `stripe-example-mul
 
 This will effectively be your server and you can now run the client that will connect to the server through Apollo Client.
 
-You can now run `yarn start` to run the NodeJS server to expose the GraphQL api on `localhost:4000`
+The `web` image of the docker compose will run the NodeJS web (express) server and expose the GraphQL api on `localhost:4000`
+
+## Web server (GraphqL and DB)
+
+You can also run the web server directly as follows:
 
 ```bash
 $ yarn start
