@@ -80,7 +80,18 @@ export const typeDefs = gql`
     createSubcription(source: String!, ccLast4: String!, startAt: String): User
     updateSubcription(id: String!, plan: String!)
     cancelSubscription: User
+    reactivateSubcription(id: String!): Boolean
         
     changeCreditCard(source: String!, ccLast4: String!): User    
+
+    createInvoice(customer: String!, items: InvoiceItem[], billing: String, days_until_due: Number): Boolean
+
+    createPlan(currency: String, interval: String, product: String, nickname: String, amount: Number): Plan
+    updatePlan(id: String!, currency: String, interval: String, product: String, nickname: String, amount: Number): Plan
+    deletePlan(id: String!): Boolean!
+    
+    createProduct(name: String!, type: String!): Product    
+    updateProduct(id: String!, name: String, caption: String, description: String): Product
+    deleteProduct(id: String!): Boolean!    
   }
 `;

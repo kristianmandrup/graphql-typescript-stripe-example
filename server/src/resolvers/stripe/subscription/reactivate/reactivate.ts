@@ -38,6 +38,7 @@ export const reactivate = async (_: any, props: any, { req }: any) => {
   const user = await findUserInSession(req, getUser);
   const stripeCustomer = await retrieveStripeCustomer(user);
   const subscription = getCustomerSubscription(stripeCustomer);
-  const plan = "xyz";
+  const plan = props.plan || "xyz";
+  console.log("reactivate", { subscription, plan });
   await reactivateSubscription({ subscription, plan });
 };

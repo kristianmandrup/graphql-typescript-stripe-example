@@ -110,3 +110,7 @@ Cancel subscription only makes sense if user has already paid for a subscription
 ## Resolvers
 
 See [Resolvers](./Resolvers.md)
+
+## GraphiQL test endpoints
+
+Go to [http://localhost:4000/graphql](http://localhost:4000/graphql)
