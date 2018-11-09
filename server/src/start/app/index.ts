@@ -1,4 +1,4 @@
-import * as express from "express";
+import express from "express";
 import { createSession } from "./session";
 import { addCors } from "./cors";
 import { listen } from "./listen";
