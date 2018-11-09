@@ -47,7 +47,8 @@ docker run --rm   --name pg-docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 -
 
 ### Missing user/role
 
-Create the user `postgres` with SUPERUSER access, if missing
+Create the user `postgres` with SUPERUSER access, if missing.
+Also create the database `stripe-example`
 
 `CREATE USER postgres WITH SUPERUSER PASSWORD 'postgres';`
 
@@ -57,6 +58,7 @@ psql (10.5)
 Type "help" for help.
 
 postgres=# CREATE USER postgres WITH SUPERUSER PASSWORD 'postgres';
+postgres=# CREATE DATABASE "stripe-example";
 postgres=# \q
 ```
 

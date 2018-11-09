@@ -13,8 +13,8 @@ export const typeDefs = gql`
     object: String!
     active: Boolean!
     caption: String!
-    created: Number!
-    updated: Number!
+    created: Int!
+    updated: Int!
     description: String!
     images: [String]
     name: String!
@@ -24,37 +24,37 @@ export const typeDefs = gql`
   type Plan {
     id: ID!
     active: Boolean!
-    amount: Number!
+    amount: Int!
     currency: String!
     interval: String!
     nickname: String!
     product: String!
-    trial_period_days: Number!
+    trial_period_days: Int!
     usage_type: String!
   }
 
   type SubscriptionData {
     id: ID!
-    created: Number!
+    created: Int!
     object: String!
     plan: Plan
-    quantity: Number!
+    quantity: Int!
     subscription: String!
   }
 
   type SubscriptionItem {
     object: String!
     data: [SubscriptionData]
-    total_count: Number!
+    total_count: Int!
   }
 
   type Subscription {
     id: ID!
     object: String!
-    items: [Item]
+    items: [SubscriptionItem]
   }
 
-  interface InvoiceItem {
+  type InvoiceItem {
     plan: String
   }
 
@@ -62,12 +62,16 @@ export const typeDefs = gql`
     items: [InvoiceItem]
     customer: String!
     billing: String!
-    days_until_due: Number!
+    days_until_due: Int!
   }
 
   type Query {
     me: User
     listNames: [String]!
+
+    listSubscriptions(plan: String!): [Subscription]
+    listProducts(limit: Int): [Product]
+    listPlans(limit: Int): [Plan]
   }
 
   type Mutation {
@@ -76,9 +80,47 @@ export const typeDefs = gql`
     logout: Boolean!
 
     createSubcription(source: String!, ccLast4: String!, startAt: String): User
-    updateSubcription(id: String!, plan: String!): Boolean
+    updateSubcription(id: String!, plan: String!): Boolean!
     cancelSubscription: User
+    reactivateSubcription(id: String!): Boolean!
 
     changeCreditCard(source: String!, ccLast4: String!): User
+
+    createInvoice(
+      customer: String!
+      items: [InvoiceItem]
+      billing: String
+      days_until_due: Int
+    ): Boolean!
+
+    createPlan(
+      currency: String
+      interval: String
+      product: String!
+      nickname: String!
+      amount: Int!
+    ): Plan
+
+    updatePlan(
+      id: String!
+      currency: String
+      interval: String
+      product: String
+      nickname: String
+      amount: Int
+    ): Plan
+
+    deletePlan(id: String!): Boolean!
+
+    createProduct(name: String!, type: String!): Product
+
+    updateProduct(
+      id: String!
+      name: String
+      caption: String
+      description: String
+    ): Product
+
+    deleteProduct(id: String!): Boolean!
   }
 `;
