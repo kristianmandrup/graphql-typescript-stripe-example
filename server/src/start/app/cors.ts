@@ -1,6 +1,6 @@
-import { server } from "./server";
+import { createServer } from "./server";
 export const addCors = (app: any) => {
-  server.applyMiddleware({
+  createServer().applyMiddleware({
     app,
     cors: {
       credentials: true,

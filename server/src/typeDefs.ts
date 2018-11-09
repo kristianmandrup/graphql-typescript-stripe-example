@@ -55,7 +55,7 @@ export const typeDefs = gql`
   }
 
   interface InvoiceItem {
-    plan: String;
+    plan: String
   }
 
   type Invoice {
@@ -76,9 +76,9 @@ export const typeDefs = gql`
     logout: Boolean!
 
     createSubcription(source: String!, ccLast4: String!, startAt: String): User
-    updateSubcription(id: String!, plan: String!)
+    updateSubcription(id: String!, plan: String!): Boolean
     cancelSubscription: User
-        
-    changeCreditCard(source: String!, ccLast4: String!): User    
+
+    changeCreditCard(source: String!, ccLast4: String!): User
   }
 `;
