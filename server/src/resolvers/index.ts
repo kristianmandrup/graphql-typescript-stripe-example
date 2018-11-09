@@ -5,12 +5,20 @@ import { login } from "./session/login";
 import { register } from "./account/register";
 import * as stripe from "./stripe";
 
+const names = ["a", "b"];
+
+export const listNames = async (_: any, props: any, __: any) => {
+  const { name } = props;
+  return await names.filter(val => val != name);
+};
+
 export const resolvers: IResolvers = {
   Query: {
     me,
-    listSubscriptions: stripe.subscription.list,
-    listProducts: stripe.product.list,
-    listPlans: stripe.plan.list
+    listNames
+    // listSubscriptions: stripe.subscription.list,
+    // listProducts: stripe.product.list,
+    // listPlans: stripe.plan.list
   },
   Mutation: {
     register,

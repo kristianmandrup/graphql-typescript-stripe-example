@@ -67,9 +67,7 @@ export const typeDefs = gql`
 
   type Query {
     me: User
-    listSubscriptions(plan: String!): [Subscription]
-    listProducts(limit: Number!): [Product]
-    listPlans(limit: Number!): [Plan]
+    listNames: [String]!
   }
 
   type Mutation {
