@@ -3657,7 +3657,7 @@ realpath-native@^1.0.0:
   dependencies:
     util.promisify "^1.0.0"
 
-reflect-metadata@^0.1.10, reflect-metadata@^0.1.12:
+reflect-metadata@^0.1.12:
   version "0.1.12"
   resolved "https://registry.yarnpkg.com/reflect-metadata/-/reflect-metadata-0.1.12.tgz#311bf0c6b63cd782f228a81abe146a2bfa9c56f2"
 
@@ -4164,9 +4164,9 @@ strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
-stripe@^6.12.1:
-  version "6.12.1"
-  resolved "https://registry.yarnpkg.com/stripe/-/stripe-6.12.1.tgz#fbe74fefd99f256f0d713c97f6ff36221add8d27"
+stripe@^6.14.0:
+  version "6.14.0"
+  resolved "https://registry.yarnpkg.com/stripe/-/stripe-6.14.0.tgz#e029e79fffed74d90c498c07b1d70f7ee564dce9"
   dependencies:
     lodash.isplainobject "^4.0.6"
     qs "~6.5.1"

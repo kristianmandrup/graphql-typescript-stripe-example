@@ -29,7 +29,7 @@
     "express-session": "^1.15.6",
     "graphql": "^14.0.2",
     "pg": "^7.3.0",
-    "reflect-metadata": "^0.1.10",
+    "reflect-metadata": "^0.1.12",
     "typeorm": "0.2.7"
   },
   "scripts": {

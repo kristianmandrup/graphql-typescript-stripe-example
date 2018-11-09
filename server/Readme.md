@@ -9,6 +9,16 @@ See these videos:
 - [Docker PostgreSQL Tutorial with Persistent Data](https://www.youtube.com/watch?v=G3gnMSyX-XM)
 - [Docker Compose Tutorial with PostgreSQL and Node.js](https://www.youtube.com/watch?v=A9bA5HpOk30)
 
+## Getting started
+
+### Mac OSX
+
+Install postgres by following [this guide](https://www.codementor.io/engineerapart/getting-started-with-postgresql-on-mac-osx-are8jcopb)
+
+Star the server as follows:
+
+`$ pg_ctl -D /usr/local/var/postgres start`
+
 ## Docker build
 
 Build docker image using `Dockerfile` and tag it as: `stripe-example-multi-stage`
