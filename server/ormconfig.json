@@ -1,41 +1,18 @@
-[
-  {
-    "name": "default",
-    "type": "postgres",
-    "host": "localhost",
-    "port": 5432,
-    "username": "postgres",
-    "password": "postgres",
-    "database": "stripe-example",
-    "synchronize": true,
-    "logging": true,
-    "entities": ["src/entity/**/*"],
-    "migrations": ["src/migration/**/*"],
-    "subscribers": ["src/subscriber/**/*"],
-    "cli": {
-      "entitiesDir": "src/entity",
-      "migrationsDir": "src/migration",
-      "subscribersDir": "src/subscriber"
-    }
-  },
-  {
-    "name": "test",
-    "type": "postgres",
-    "host": "localhost",
-    "port": 5432,
-    "username": "postgres",
-    "password": "postgres",
-    "database": "stripe-example-test",
-    "synchronize": true,
-    "dropSchema": true,
-    "logging": false,
-    "entities": ["src/entity/**/*"],
-    "migrations": ["src/migration/**/*"],
-    "subscribers": ["src/subscriber/**/*"],
-    "cli": {
-      "entitiesDir": "src/entity",
-      "migrationsDir": "src/migration",
-      "subscribersDir": "src/subscriber"
-    }
+{
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "postgres",
+  "password": "postgres",
+  "database": "stripe-example",
+  "synchronize": true,
+  "logging": false,
+  "entities": ["src/entity/**/*.ts"],
+  "migrations": ["src/migration/**/*.ts"],
+  "subscribers": ["src/subscriber/**/*.ts"],
+  "cli": {
+    "entitiesDir": "src/entity",
+    "migrationsDir": "src/migration",
+    "subscribersDir": "src/subscriber"
   }
-]
+}
