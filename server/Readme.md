@@ -19,11 +19,54 @@ Star the server as follows:
 
 `$ pg_ctl -D /usr/local/var/postgres start`
 
+## Getting stated: Docker image
+
+Install and run the standard `postgres` docker image
+
+`$ npm run postgres`
+
+Then add a `postgres` role
+
+`CREATE ROLE postgres;`
+
+See [Don’t install Postgres. Docker pull Postgres](https://hackernoon.com/dont-install-postgres-docker-pull-postgres-bee20e200198)
+
+### Create a Directory to Serve as the Local Host Mount Point for Postgres Data Files
+
+`mkdir -p $HOME/docker/volumes/postgres`
+
+### Run the Postgres Container
+
+```bash
+docker run --rm   --name pg-docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data  postgre
+```
+
+### Connect to Postgres
+
+`psql -h localhost -U postgres -d postgres`
+
+### Missing user/role
+
+Create the user `postgres` with SUPERUSER access, if missing
+
+`CREATE USER postgres WITH SUPERUSER PASSWORD 'postgres';`
+
+```bash
+$ psql postgres
+psql (10.5)
+Type "help" for help.
+
+postgres=# CREATE USER postgres WITH SUPERUSER PASSWORD 'postgres';
+postgres=# \q
+```
+
 ## Docker build
 
 Build docker image using `Dockerfile` and tag it as: `stripe-example-multi-stage`
 
-- `docker build -t stripe-example-multi-stage .`
+The docker services (each with a `Dockerfile`) are in the `/services` folder
+
+- `docker build -t stripe-example-multi-stage services/web`
 
 The `web` service in `docker-compose.yml` is based on the `stripe-example-multi-stage`
 

@@ -36,6 +36,7 @@
     "start": "nodemon --exec ts-node src/index.ts",
     "up": "docker-compose up",
     "rebuild": "docker build -t stripe-example-multi-stage .",
+    "postgres": "docker run -p 5432:5432 -d -e POSTGRES_PASSWORD=postgres -e POSTGRES_USER=postgres -e POSTGRES_DB=stripe-example -v pgdata:/var/lib/postgresql/data postgres",
     "build": "tsc -b",
     "test": "jest --forceExit",
     "ci": "start-server-and-test start-server http://localhost:4000 test"
